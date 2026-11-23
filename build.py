@@ -23,7 +23,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 OUT = ROOT / "docs"
 SITE = "architecture4future"
-VERSION = "31"
+VERSION = "33"
 
 PROJETS = json.loads((SRC / "projets.json").read_text(encoding="utf-8"))
 BY_SLUG = {p["slug"]: p for p in PROJETS}
@@ -155,9 +155,24 @@ def layout(meta, body, nav_key):
 <main id="contenu">
 {body}
 </main>
-<footer class="foot mono">
-  <span>{SITE} · SAS d’architecture au capital de 4 444 € · SIRET 892 007 444 · Inscrite à l’Ordre des architectes</span>
-  <span><a href="https://www.instagram.com/archi4future/" rel="noopener" target="_blank">Instagram ↗</a> · <a href="https://fr.linkedin.com/in/patrick-stefan-rheinert-3ba51641" rel="noopener" target="_blank">LinkedIn ↗</a> · <a href="mentions-legales.html">Mentions légales</a></span>
+<footer class="site-foot">
+  <div class="sf-top">
+    <div class="sf-brand">
+      <a class="logo" href="index.html">{LOGO}</a>
+      <p>Agence d’architecture à Vienne. Des bâtiments agiles, citoyens, sobres et végétaux.</p>
+      <div class="sf-social">
+        <a href="https://www.instagram.com/archi4future/" aria-label="Instagram" rel="noopener" target="_blank">{ICON_IG}</a>
+        <a href="https://fr.linkedin.com/in/patrick-stefan-rheinert-3ba51641" aria-label="LinkedIn" rel="noopener" target="_blank">{ICON_IN}</a>
+      </div>
+    </div>
+    <div class="sf-col"><p class="mono">Agence</p><p>grünboX-Vienne<br>75 rue Victor Faugier<br>38200 Vienne</p></div>
+    <div class="sf-col"><p class="mono">Contact</p><p><a class="ul" href="tel:+33986572544">09 86 57 25 44</a><br><a class="ul" href="mailto:contact@architecturefuture.fr">contact@architecturefuture.fr</a></p><a class="btn" href="contact.html">Écrire à l’agence →</a></div>
+    <div class="sf-col"><p class="mono">Pages</p><ul>{"".join(f'<li><a class="ul" href="{h}">{l}</a></li>' for k, h, l in links)}</ul></div>
+  </div>
+  <div class="sf-bottom mono">
+    <span>SAS d’architecture au capital de 4 444 € · SIRET 892 007 444 · Inscrite à l’Ordre des architectes</span>
+    <span><a class="ul" href="mentions-legales.html">Mentions légales</a><button class="to-top ul" type="button">Haut de page ↑</button></span>
+  </div>
 </footer>
 <script src="assets/vendor/gsap.min.js" defer></script>
 <script src="assets/vendor/ScrollTrigger.min.js" defer></script>

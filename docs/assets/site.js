@@ -231,5 +231,9 @@
     });
   }
 
+  /* ---------- Haut de page ---------- */
+  var tt = $('.to-top');
+  if (tt) tt.addEventListener('click', function () { if (lenis) lenis.scrollTo(0, { duration: 1.4 }); else window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); });
+
   window.addEventListener('load', function () { if (hasGsap) ScrollTrigger.refresh(); });
 })();
