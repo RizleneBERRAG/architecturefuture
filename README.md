@@ -28,7 +28,7 @@ Après chaque modification de `src/` : `python build.py` (régénère `docs/*.ht
 - Trame d’architecte en fond, photos plein écran sous un voile uni, rideau entre les pages, curseur personnalisé.
 - Accueil : diaporama plein écran, manifeste qui s’allume mot à mot, 4 principes en séquence épinglée, réalisations en défilement horizontal, chiffres de la grünboX, bande végétale, défilant des distinctions.
 - Index des réalisations : liste avec image qui suit la souris ou vue galerie, filtres par type. Fiches : héros plein écran, bande photo à glisser, visionneuse, projet suivant en plein écran.
-- Animations : GSAP 3.12.5 + ScrollTrigger et Lenis 1.1.13, copiés dans `docs/assets/vendor/` (aucun appel externe). Tout reste lisible sans JavaScript et avec « réduire les animations ».
+- Animations : GSAP 3.12.5 + ScrollTrigger et Lenis 1.1.13, copiés dans `docs/assets/vendor/` (scripts servis par le site, seules les polices Google et la carte OpenStreetMap restent externes). Tout reste lisible sans JavaScript et avec « réduire les animations ».
 - Aucun dégradé, aucun halo, aucun bouton en gélule.
 
 ## Provenance du contenu
