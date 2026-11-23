@@ -6,7 +6,28 @@
     "lieu": "Vienne (Isère)",
     "categorie": "Réhabilitation",
     "annee": "Livraison début 2025",
-    "fiche": [["Maître d’ouvrage", "Patrick Stefan Rheinert"], ["Maître d’œuvre", "architecture4future / PSR-Conseil"], ["Surface de plancher", "530 m²"], ["Budget", "950 k€ TTC"], ["Calendrier", "Livraison début 2025"]],
+    "fiche": [
+      [
+        "Maître d’ouvrage",
+        "Patrick Stefan Rheinert"
+      ],
+      [
+        "Maître d’œuvre",
+        "architecture4future / PSR-Conseil"
+      ],
+      [
+        "Surface de plancher",
+        "530 m²"
+      ],
+      [
+        "Budget",
+        "950 k€ TTC"
+      ],
+      [
+        "Calendrier",
+        "Livraison début 2025"
+      ]
+    ],
     "texte": [
       "Le bâtiment industriel historique, inoccupé depuis plus de 20 ans, est situé à Vienne, dans la vallée de la Gère, un quartier stigmatisé et paupérisé depuis l’effondrement de l’industrie textile. Nous avons cependant identifié dans ce bâtiment un potentiel important, bien que caché, pour un projet pilote durable. Ici, nous voulions également donner une impulsion positive à l’ensemble du voisinage, contribuer à redynamiser le quartier et à transformer le sentiment d’abandon en un sentiment de renouveau.",
       "Le bâtiment rénové de manière durable a acquis de nouvelles fonctions et propose des logements abordables et attrayants, un espace de coworking ainsi qu’un « Tiers-Lieu », une salle multifonctionnelle pour les événements. Les logements peuvent être utilisés comme bureaux selon les besoins et vice versa.",
@@ -14,7 +35,19 @@
       "L’aménagement de l’espace de coworking et du « Tiers-Lieu » a eu recours à 90 % de matériaux en réemploi. Les habillages des murs de la grande salle ont même été réalisés avec des déchets, et les chutes de ces habillages — les déchets des déchets — ont servi à habiller les murs des sanitaires en mosaïque. L’empreinte carbone (cycle de vie) de l’ensemble du bâtiment est d’environ −65 % par rapport à une construction neuve de volume équivalent, soit une économie d’environ 1 tonne de CO₂ par m² de surface de plancher.",
       "Le projet a été récompensé par le 2e prix international des Smart Cities 2017 dans la catégorie « Habitat » (journal Le Monde), a remporté le Prix Plan Climat de Vienne Condrieu Agglomération en 2024 et le Prix Économie Circulaire des Green Solutions Awards en 2025."
     ],
-    "images": ["grunbox-01", "grunbox-02", "grunbox-03", "grunbox-07", "grunbox-06", "grunbox-08", "grunbox-04", "grunbox-09", "grunbox-11", "grunbox-10", "grunbox-05"],
+    "images": [
+      "grunbox-02",
+      "grunbox-01",
+      "grunbox-03",
+      "grunbox-07",
+      "grunbox-06",
+      "grunbox-08",
+      "grunbox-04",
+      "grunbox-09",
+      "grunbox-11",
+      "grunbox-10",
+      "grunbox-05"
+    ],
     "vedette": true
   },
   {
@@ -24,13 +57,40 @@
     "lieu": "Vaulx-en-Velin (Rhône)",
     "categorie": "Habitat",
     "annee": "2020",
-    "fiche": [["Maître d’ouvrage", "Patrick Stefan Rheinert"], ["Maître d’œuvre", "architecture4future"], ["Surface de plancher", "49 m²"], ["Budget", "120 k€"], ["Réalisation", "2020"]],
+    "fiche": [
+      [
+        "Maître d’ouvrage",
+        "Patrick Stefan Rheinert"
+      ],
+      [
+        "Maître d’œuvre",
+        "architecture4future"
+      ],
+      [
+        "Surface de plancher",
+        "49 m²"
+      ],
+      [
+        "Budget",
+        "120 k€"
+      ],
+      [
+        "Réalisation",
+        "2020"
+      ]
+    ],
     "texte": [
       "La Tiny House Urbaine transforme un garage en un logement de 49 m², qui semble étonnamment spacieux grâce à une optimisation intelligente de l’espace. Le stationnement de voiture devient ainsi un espace de vie multifonctionnel, où une combinaison harmonieuse entre habitat et travail a été expérimentée. La dalle d’accès au garage est transformée en un jardin praticable pour le stationnement et la recharge de la voiture électrique.",
       "Cette expérimentation teste une vision où le confort s’allie à la sobriété. La Tiny House Urbaine est un concept pionnier qui montre que 1 + 1 = 3 : l’espace de vie peut s’adapter de manière flexible à différents usages sans perdre en fonctionnalité.",
       "Elle se distingue par l’art du minimalisme et crée un environnement sain grâce à l’utilisation de matériaux biosourcés. La voiture électrique est garée sur un potager stabilisé à culture d’herbes aromatiques. Avec ses jardins verticaux, ce projet réduit l’empreinte écologique et apporte une touche rurale en plein cœur de la ville."
     ],
-    "images": ["tiny-02", "tiny-01", "tiny-03", "tiny-04", "tiny-05"],
+    "images": [
+      "tiny-02",
+      "tiny-01",
+      "tiny-03",
+      "tiny-04",
+      "tiny-05"
+    ],
     "vedette": true
   },
   {
@@ -40,12 +100,37 @@
     "lieu": "Caluire-et-Cuire (Rhône)",
     "categorie": "Habitat",
     "annee": "Conception 2015",
-    "fiche": [["Maître d’ouvrage", "Claude Evrard Promotion"], ["Maître d’œuvre", "Agence Rheinert – Oxygen Architecture"], ["Surface de plancher", "1 284 m²"], ["Budget", "1 800 k€"], ["Calendrier", "Conception 2015"]],
+    "fiche": [
+      [
+        "Maître d’ouvrage",
+        "Claude Evrard Promotion"
+      ],
+      [
+        "Maître d’œuvre",
+        "Agence Rheinert – Oxygen Architecture"
+      ],
+      [
+        "Surface de plancher",
+        "1 284 m²"
+      ],
+      [
+        "Budget",
+        "1 800 k€"
+      ],
+      [
+        "Calendrier",
+        "Conception 2015"
+      ]
+    ],
     "texte": [
       "L’objectif de cette étude de façade était de végétaliser durablement le bâtiment grâce à une plantation intensive avec un espace racinaire aussi grand que possible, et de donner aux appartements les qualités d’un espace extérieur proche de la nature.",
       "La conception des bacs de plantation et l’utilisation d’espèces végétales spécifiques en font une oasis urbaine."
     ],
-    "images": ["caluire-01", "caluire-02", "caluire-03"],
+    "images": [
+      "caluire-01",
+      "caluire-02",
+      "caluire-03"
+    ],
     "vedette": true
   },
   {
@@ -55,12 +140,38 @@
     "lieu": "Vienne (Isère)",
     "categorie": "Habitat",
     "annee": "2012 – 2016",
-    "fiche": [["Maître d’ouvrage", "SCCB"], ["Maître d’œuvre", "Agence Rheinert – Oxygen Architecture"], ["Surface de plancher", "1 187 m²"], ["Budget", "1 483 k€"], ["Calendrier", "2012 – 2016"]],
+    "fiche": [
+      [
+        "Maître d’ouvrage",
+        "SCCB"
+      ],
+      [
+        "Maître d’œuvre",
+        "Agence Rheinert – Oxygen Architecture"
+      ],
+      [
+        "Surface de plancher",
+        "1 187 m²"
+      ],
+      [
+        "Budget",
+        "1 483 k€"
+      ],
+      [
+        "Calendrier",
+        "2012 – 2016"
+      ]
+    ],
     "texte": [
       "Le petit immeuble s’intègre harmonieusement dans les constructions existantes de la rue et prolonge leur caractère. Le projet résidentiel se caractérise par sa générosité et est accessible par un jardin japonais via un hall vitré.",
       "Tous les appartements sont desservis par une cage d’escalier ouverte et spacieuse avec des terrasses communes qui complètent les balcons à usage privé. Le toit du garage est également végétalisé. En outre, il existe un jardin commun avec des figuiers."
     ],
-    "images": ["vienne-02", "vienne-01", "vienne-03", "vienne-04"],
+    "images": [
+      "vienne-04",
+      "vienne-02",
+      "vienne-01",
+      "vienne-03"
+    ],
     "vedette": true
   },
   {
@@ -70,13 +181,31 @@
     "lieu": "Lyon",
     "categorie": "Agriculture urbaine",
     "annee": "En cours",
-    "fiche": [["Maître d’ouvrage", "Truite et Basilic"], ["Maître d’œuvre", "Agence Rheinert – Oxygen Architecture"], ["Calendrier", "En cours"]],
+    "fiche": [
+      [
+        "Maître d’ouvrage",
+        "Truite et Basilic"
+      ],
+      [
+        "Maître d’œuvre",
+        "Agence Rheinert – Oxygen Architecture"
+      ],
+      [
+        "Calendrier",
+        "En cours"
+      ]
+    ],
     "texte": [
       "Comment utiliser la ville de manière innovante pour la production alimentaire ? Le projet « Truite et Basilic » propose de transformer une barge fluviale en une serre flottante, en utilisant la technique de l’aquaponie, une combinaison symbiotique de culture de plantes et de pisciculture.",
       "Les rives des fleuves lyonnais, notamment le Rhône, accueillent depuis des siècles des marchés quotidiens et hebdomadaires. Les denrées produites localement peuvent y être apportées directement à l’acheteur : trajets courts et agriculture urbaine innovante sont ici au premier plan.",
       "Ce bateau reconverti dispose d’une façade extérieure végétalisée et d’un espace d’accueil pédagogique qui sert à la fois de point de vente au public et d’espace d’information sur l’agriculture urbaine."
     ],
-    "images": ["truite-01", "truite-02", "truite-03", "truite-04"],
+    "images": [
+      "truite-01",
+      "truite-02",
+      "truite-03",
+      "truite-04"
+    ],
     "vedette": true
   },
   {
@@ -86,13 +215,38 @@
     "lieu": "Décines-Charpieu (Rhône)",
     "categorie": "Habitat",
     "annee": "Conception 2020",
-    "fiche": [["Maître d’ouvrage", "Sollar"], ["Maître d’œuvre", "Agence Rheinert – Oxygen Architecture"], ["Surface de plancher", "3 700 m²"], ["Budget", "5,2 M€ HT"], ["Calendrier", "Conception 2020"]],
+    "fiche": [
+      [
+        "Maître d’ouvrage",
+        "Sollar"
+      ],
+      [
+        "Maître d’œuvre",
+        "Agence Rheinert – Oxygen Architecture"
+      ],
+      [
+        "Surface de plancher",
+        "3 700 m²"
+      ],
+      [
+        "Budget",
+        "5,2 M€ HT"
+      ],
+      [
+        "Calendrier",
+        "Conception 2020"
+      ]
+    ],
     "texte": [
       "Décines est le prototype de notre projet de logement intergénérationnel « Récipro-Cité ». Situé dans le centre-ville de cette commune de l’est lyonnais, l’objectif était d’offrir un logement de qualité et les ingrédients pour un voisinage actif.",
       "Le projet propose un habitat proche de la nature, conçu pour maintenir la « bonne » distance entre les espaces privés et semi-publics, afin de permettre un bon voisinage et de faciliter les activités communes entre les générations, comme le jardinage, le bricolage et le fitness. L’objectif était également de permettre aux familles d’éviter certaines dépenses liées aux services à domicile (garde d’enfants, loisirs, alimentation).",
       "Le modèle de ce complexe résidentiel a été présenté en 2010 à l’Exposition universelle de Shanghai sous le slogan « Better City – Better Life »."
     ],
-    "images": ["decines-03", "decines-01", "decines-02"],
+    "images": [
+      "decines-03",
+      "decines-01",
+      "decines-02"
+    ],
     "vedette": false
   },
   {
@@ -102,12 +256,36 @@
     "lieu": "Décines-Charpieu (Rhône)",
     "categorie": "Habitat",
     "annee": "2021 – 2025",
-    "fiche": [["Maître d’ouvrage", "Jarret"], ["Maître d’œuvre", "architecture4future"], ["Surface de plancher", "200 m²"], ["Budget", "260 000 € TTC"], ["Calendrier", "2021 – 2025"]],
+    "fiche": [
+      [
+        "Maître d’ouvrage",
+        "Jarret"
+      ],
+      [
+        "Maître d’œuvre",
+        "architecture4future"
+      ],
+      [
+        "Surface de plancher",
+        "200 m²"
+      ],
+      [
+        "Budget",
+        "260 000 € TTC"
+      ],
+      [
+        "Calendrier",
+        "2021 – 2025"
+      ]
+    ],
     "texte": [
       "Ce projet de maison individuelle se situe directement au bord du lac et s’inspire des hangars à bateaux situés à proximité sur la rive. Il s’agit d’une architecture simple qui doit permettre au maître d’ouvrage de réaliser lui-même une grande partie du projet. L’ancienne maison, qui n’a pas pu être conservée, lui fournit pour cela de précieux matériaux de construction, comme les poutres en bois.",
       "L’utilisation réfléchie de matériaux simples confère à la maison une atmosphère intemporelle et confortable. De grandes baies vitrées au nord donnent sur le lac et la piscine, et au sud sur la cour intérieure plantée de cactus. Selon le temps, les lucarnes inondent les pièces de lumière naturelle, ou apportent le bruit intime du crépitement des gouttes de pluie."
     ],
-    "images": ["jarret-01", "jarret-02"],
+    "images": [
+      "jarret-01",
+      "jarret-02"
+    ],
     "vedette": false
   },
   {
@@ -117,13 +295,39 @@
     "lieu": "Décines-Charpieu (Rhône)",
     "categorie": "Habitat",
     "annee": "Conception 2016",
-    "fiche": [["Maître d’ouvrage", "Mercier"], ["Maître d’œuvre", "Agence Rheinert – Oxygen Architecture"], ["Surface de plancher", "1 434 m²"], ["Budget", "2 454 k€"], ["Calendrier", "2016"]],
+    "fiche": [
+      [
+        "Maître d’ouvrage",
+        "Mercier"
+      ],
+      [
+        "Maître d’œuvre",
+        "Agence Rheinert – Oxygen Architecture"
+      ],
+      [
+        "Surface de plancher",
+        "1 434 m²"
+      ],
+      [
+        "Budget",
+        "2 454 k€"
+      ],
+      [
+        "Calendrier",
+        "2016"
+      ]
+    ],
     "texte": [
       "Le projet de Champblanc se distingue par le fait que nous l’avons développé avec un groupe d’habitants organisés en association. L’objectif était de créer un lieu de vie commun pour 18 familles, dont quelques pompiers volontaires dont la caserne avait été transférée dans une commune voisine. La ville de Décines, qui ne voulait pas perdre ces « familles de sauveteurs », a soutenu le projet en offrant un prix bonifié pour le terrain.",
       "Le concept prévoyait 6 maisons mitoyennes et 12 appartements dans un petit collectif, ainsi que différents espaces communs — une salle polyvalente pour les réunions et les rencontres conviviales, une chambre d’amis — gérés par l’association. Les habitants prévoyaient de réaliser eux-mêmes les travaux de finition, ce qui devait réduire les coûts d’environ 20 %.",
       "Les banques n’ont malheureusement pas soutenu un tel projet, qui a dû être abandonné après de gros efforts communs."
     ],
-    "images": ["champblanc-01", "champblanc-04", "champblanc-02", "champblanc-03"],
+    "images": [
+      "champblanc-01",
+      "champblanc-04",
+      "champblanc-02",
+      "champblanc-03"
+    ],
     "vedette": false
   },
   {
@@ -133,12 +337,39 @@
     "lieu": "Lyon 6e",
     "categorie": "Équipement",
     "annee": "2016 – en cours",
-    "fiche": [["Maître d’ouvrage", "Judo Club Lugdunum"], ["Maître d’œuvre", "Agence Rheinert – Oxygen Architecture"], ["Surface de plancher", "350 m²"], ["Budget", "750 k€"], ["Calendrier", "2016 – en cours"]],
+    "fiche": [
+      [
+        "Maître d’ouvrage",
+        "Judo Club Lugdunum"
+      ],
+      [
+        "Maître d’œuvre",
+        "Agence Rheinert – Oxygen Architecture"
+      ],
+      [
+        "Surface de plancher",
+        "350 m²"
+      ],
+      [
+        "Budget",
+        "750 k€"
+      ],
+      [
+        "Calendrier",
+        "2016 – en cours"
+      ]
+    ],
     "texte": [
       "Le projet de club de judo dans le 6e arrondissement de Lyon est bien plus qu’un simple lieu de pratique d’arts martiaux. Il comprend des appartements, des logements étudiants et un dojo, et la conception des espaces garantit qu’il n’y a pas de conflit d’usage entre ces fonctions.",
       "Le projet comprend aussi une terrasse sur le toit, aménagée avec beaucoup de verdure. La façade sur rue intègre la signalétique du dojo, filtre la lumière et réduit les perturbations dues à l’animation de la rue. Elle est entièrement constituée de modules pouvant être fabriqués industriellement, qui rappellent la matérialité du bambou et l’esthétique du pliage."
     ],
-    "images": ["judo-01", "judo-02", "judo-03", "judo-04", "judo-05"],
+    "images": [
+      "judo-01",
+      "judo-02",
+      "judo-03",
+      "judo-04",
+      "judo-05"
+    ],
     "vedette": false
   },
   {
@@ -148,13 +379,40 @@
     "lieu": "Meyzieu (Rhône)",
     "categorie": "Équipement",
     "annee": "2015 – 2016",
-    "fiche": [["Maître d’ouvrage", "Commune de Meyzieu"], ["Maître d’œuvre", "Agence Rheinert – Oxygen Architecture"], ["Surface de plancher", "250 m²"], ["Budget", "400 k€"], ["Calendrier", "2015 – 2016"]],
+    "fiche": [
+      [
+        "Maître d’ouvrage",
+        "Commune de Meyzieu"
+      ],
+      [
+        "Maître d’œuvre",
+        "Agence Rheinert – Oxygen Architecture"
+      ],
+      [
+        "Surface de plancher",
+        "250 m²"
+      ],
+      [
+        "Budget",
+        "400 k€"
+      ],
+      [
+        "Calendrier",
+        "2015 – 2016"
+      ]
+    ],
     "texte": [
       "L’extension de l’école Condorcet à Meyzieu était un projet de rénovation important pour cet établissement situé en centre-ville. En étroite collaboration avec les services techniques de la commune, nous avons conçu une extension qui s’intègre harmonieusement au bâtiment existant.",
       "L’extension comprend un local pour le personnel ATSEM, une extension des sanitaires et une zone de circulation servant de rangement pour les chaussons. Une attention particulière a été portée à ce que l’extension n’empiète pas sur la cour, un espace de détente important pour les enfants.",
       "La façade sud est composée d’une succession de murs végétalisés, perforés et vitrés. Grâce à ce jeu de transparence et de lumière, le bâtiment existant reçoit beaucoup de lumière naturelle."
     ],
-    "images": ["condorcet-02", "condorcet-01", "condorcet-03", "condorcet-04", "condorcet-05"],
+    "images": [
+      "condorcet-02",
+      "condorcet-01",
+      "condorcet-03",
+      "condorcet-04",
+      "condorcet-05"
+    ],
     "vedette": false
   },
   {
@@ -164,12 +422,38 @@
     "lieu": "Allonzier-la-Caille (Haute-Savoie)",
     "categorie": "Bureaux",
     "annee": "2014",
-    "fiche": [["Maître d’ouvrage", "EPF 74"], ["Maître d’œuvre", "Agence Rheinert – Oxygen Architecture"], ["Surface de plancher", "836 m²"], ["Budget", "1 700 k€"], ["Réalisation", "2014"]],
+    "fiche": [
+      [
+        "Maître d’ouvrage",
+        "EPF 74"
+      ],
+      [
+        "Maître d’œuvre",
+        "Agence Rheinert – Oxygen Architecture"
+      ],
+      [
+        "Surface de plancher",
+        "836 m²"
+      ],
+      [
+        "Budget",
+        "1 700 k€"
+      ],
+      [
+        "Réalisation",
+        "2014"
+      ]
+    ],
     "texte": [
       "Ce projet de bureaux pour le siège de l’EPF 74 exploite au mieux un site bien visible avec un dénivelé significatif. L’aménagement des espaces de travail ouverts intègre visuellement et généreusement le panorama environnant dans le bâtiment.",
       "La salle de réunion se transforme en une salle plénière transparente qui sert de « vitrine » à cet organisme d’utilité publique pour sa mission contre la spéculation foncière, et qui peut également être louée pour des événements en dehors de son utilisation régulière."
     ],
-    "images": ["epf74-01", "epf74-02", "epf74-03", "epf74-04"],
+    "images": [
+      "epf74-01",
+      "epf74-02",
+      "epf74-03",
+      "epf74-04"
+    ],
     "vedette": false
   },
   {
@@ -179,12 +463,36 @@
     "lieu": "Lyon 1er",
     "categorie": "Bureaux",
     "annee": "2016 – 2017",
-    "fiche": [["Maître d’ouvrage", "Récipro-Cité"], ["Maître d’œuvre", "Agence Rheinert – Oxygen Architecture"], ["Surface de plancher", "147 m²"], ["Budget", "100 k€"], ["Calendrier", "2016 – 2017"]],
+    "fiche": [
+      [
+        "Maître d’ouvrage",
+        "Récipro-Cité"
+      ],
+      [
+        "Maître d’œuvre",
+        "Agence Rheinert – Oxygen Architecture"
+      ],
+      [
+        "Surface de plancher",
+        "147 m²"
+      ],
+      [
+        "Budget",
+        "100 k€"
+      ],
+      [
+        "Calendrier",
+        "2016 – 2017"
+      ]
+    ],
     "texte": [
       "La société Récipro-Cité, cofondée par Patrick Stefan Rheinert, avait besoin pour son siège social d’un concept d’espace flexible, capable de s’adapter à différentes activités et configurations de travail. Le choix architectural a consisté à concevoir un continuum de meubles modulaires qui crée des espaces ergonomiques et favorise le travail collaboratif.",
       "Les espaces largement ouverts et végétalisés utilisent la transparence pour préserver l’intimité. Une sous-face colorée soutient le système et permet d’intégrer l’éclairage."
     ],
-    "images": ["reciprocite-01", "reciprocite-02"],
+    "images": [
+      "reciprocite-01",
+      "reciprocite-02"
+    ],
     "vedette": false
   },
   {
@@ -194,12 +502,37 @@
     "lieu": "Dardilly (Rhône)",
     "categorie": "Bureaux",
     "annee": "2019",
-    "fiche": [["Maître d’ouvrage", "Kyodo Yushi Company Ltd (Japon)"], ["Maître d’œuvre", "architecture4future"], ["Surface de plancher", "445 m²"], ["Budget", "164 k€"], ["Réalisation", "2019"]],
+    "fiche": [
+      [
+        "Maître d’ouvrage",
+        "Kyodo Yushi Company Ltd (Japon)"
+      ],
+      [
+        "Maître d’œuvre",
+        "architecture4future"
+      ],
+      [
+        "Surface de plancher",
+        "445 m²"
+      ],
+      [
+        "Budget",
+        "164 k€"
+      ],
+      [
+        "Réalisation",
+        "2019"
+      ]
+    ],
     "texte": [
       "Ce programme de laboratoires et de bureaux a été conçu pour la société japonaise Kyodo Yushi, fabricant de lubrifiants notamment pour l’industrie automobile. Le plateau comprend des espaces libres, des zones de réunion, des espaces sociaux et des laboratoires.",
       "Le projet tient compte à la fois de l’organisation interne et de l’organisation technique de l’entreprise. Une attention particulière a été portée à l’ambiance lumineuse du site ainsi qu’à la végétalisation des espaces."
     ],
-    "images": ["kyodo-02", "kyodo-01", "kyodo-03"],
+    "images": [
+      "kyodo-01",
+      "kyodo-02",
+      "kyodo-03"
+    ],
     "vedette": false
   },
   {
@@ -209,12 +542,32 @@
     "lieu": "Saint-Nizier-du-Moucherotte (Vercors)",
     "categorie": "Équipement",
     "annee": "2013 – 2014",
-    "fiche": [["Maître d’ouvrage", "Météo-France"], ["Maître d’œuvre", "Agence Rheinert – Oxygen Architecture"], ["Budget", "359 k€"], ["Calendrier", "2013 – 2014"]],
+    "fiche": [
+      [
+        "Maître d’ouvrage",
+        "Météo-France"
+      ],
+      [
+        "Maître d’œuvre",
+        "Agence Rheinert – Oxygen Architecture"
+      ],
+      [
+        "Budget",
+        "359 k€"
+      ],
+      [
+        "Calendrier",
+        "2013 – 2014"
+      ]
+    ],
     "texte": [
       "L’ouvrage du Moucherotte a été construit au sommet d’une montagne du Vercors, à 1 900 m d’altitude. Il s’agit d’une nouvelle génération de stations météorologiques sous forme de tours radars, qui ont dû relever de grands défis constructifs et techniques.",
       "La structure en acier devait être aussi fine que possible et préfabriquée à 100 % pour pouvoir être livrée et montée par hélicoptère. Une fois montée, elle devait résister à des vents violents, à la glace et à la neige."
     ],
-    "images": ["moucherotte-01", "moucherotte-02"],
+    "images": [
+      "moucherotte-01",
+      "moucherotte-02"
+    ],
     "vedette": false
   },
   {
@@ -224,12 +577,38 @@
     "lieu": "Saint-Barthélemy-de-Vals (Drôme)",
     "categorie": "Réhabilitation",
     "annee": "2013 – 2014",
-    "fiche": [["Maître d’ouvrage", "ADVA"], ["Maître d’œuvre", "Agence Rheinert – Oxygen Architecture"], ["Surface de plancher", "221 m²"], ["Budget", "451 k€"], ["Calendrier", "2013 – 2014"]],
+    "fiche": [
+      [
+        "Maître d’ouvrage",
+        "ADVA"
+      ],
+      [
+        "Maître d’œuvre",
+        "Agence Rheinert – Oxygen Architecture"
+      ],
+      [
+        "Surface de plancher",
+        "221 m²"
+      ],
+      [
+        "Budget",
+        "451 k€"
+      ],
+      [
+        "Calendrier",
+        "2013 – 2014"
+      ]
+    ],
     "texte": [
       "Ce projet transforme un ancien bâtiment communal en logements sociaux pour jeunes et moins jeunes, dont un appartement pour mères célibataires. Il a été conçu pour que les futurs habitants bénéficient de logements accessibles et thermiquement performants, tout en préservant l’identité du centre du village.",
       "La reconversion du parc existant devra occuper une place plus importante dans la politique du logement, car l’interdiction d’imperméabiliser les sols limitera de plus en plus l’étalement urbain."
     ],
-    "images": ["barthelemy-01", "barthelemy-04", "barthelemy-02", "barthelemy-03"],
+    "images": [
+      "barthelemy-01",
+      "barthelemy-04",
+      "barthelemy-02",
+      "barthelemy-03"
+    ],
     "vedette": false
   },
   {
@@ -239,13 +618,32 @@
     "lieu": "Vienne (Isère)",
     "categorie": "Urbanisme",
     "annee": "Étude",
-    "fiche": [["Lieu", "Vienne (Isère)"], ["Nature", "Étude de renouvellement urbain"]],
+    "fiche": [
+      [
+        "Lieu",
+        "Vienne (Isère)"
+      ],
+      [
+        "Nature",
+        "Étude de renouvellement urbain"
+      ]
+    ],
     "texte": [
       "La vallée de la Gère est un quartier de Vienne riche en paysages et en histoire. Cet ancien site industriel était connu pour son industrie textile, notamment celle du fil, qui s’y est développée grâce à l’énergie hydraulique disponible toute l’année.",
       "Le projet est une promesse d’avenir pour ce quartier appauvri après l’effondrement de l’industrie textile : promotion des industries créatives, création d’une maison des projets pour l’accueil, les expositions et l’administration, réintroduction d’installations hydroélectriques dans le cadre de la décarbonation, création de logements et réactivation d’une ancienne brasserie.",
       "La revitalisation comprend la transformation des bâtiments industriels historiques et un réaménagement paysager des berges. L’identité industrielle est conservée : les cheminées, les façades en briques et les ferronneries d’art caractérisent le paysage."
     ],
-    "images": ["gere-07", "gere-05", "gere-08", "gere-09", "gere-06", "gere-04", "gere-01", "gere-02", "gere-03"],
+    "images": [
+      "gere-07",
+      "gere-05",
+      "gere-08",
+      "gere-09",
+      "gere-06",
+      "gere-04",
+      "gere-01",
+      "gere-02",
+      "gere-03"
+    ],
     "vedette": false
   },
   {
@@ -255,12 +653,38 @@
     "lieu": "Couzon-au-Mont-d’Or (Rhône)",
     "categorie": "Urbanisme",
     "annee": "2016",
-    "fiche": [["Maître d’ouvrage", "BDI Immobilier"], ["Maître d’œuvre", "Agence Rheinert – Oxygen Architecture"], ["Surface de plancher", "1 760 m²"], ["Budget", "2 400 k€"], ["Calendrier", "2016"]],
+    "fiche": [
+      [
+        "Maître d’ouvrage",
+        "BDI Immobilier"
+      ],
+      [
+        "Maître d’œuvre",
+        "Agence Rheinert – Oxygen Architecture"
+      ],
+      [
+        "Surface de plancher",
+        "1 760 m²"
+      ],
+      [
+        "Budget",
+        "2 400 k€"
+      ],
+      [
+        "Calendrier",
+        "2016"
+      ]
+    ],
     "texte": [
       "L’ancien site Primagaz, situé entre les contreforts des Monts d’Or et la Saône, représente une importante opportunité de développement pour la ville. Le programme prévoit un mélange de logements et de commerces afin de créer des espaces de vie et de travail — une mixité bénéfique tant du point de vue énergétique que de la qualité de vie.",
       "L’aménagement paysager comprend la création de vallées vertes et de bassins de récupération des eaux de pluie, qui contribuent à la durabilité écologique et à l’amélioration du paysage urbain."
     ],
-    "images": ["couzon-02", "couzon-01", "couzon-03", "couzon-04"],
+    "images": [
+      "couzon-02",
+      "couzon-01",
+      "couzon-03",
+      "couzon-04"
+    ],
     "vedette": false
   },
   {
@@ -270,12 +694,31 @@
     "lieu": "La Roche-sur-Foron (Haute-Savoie)",
     "categorie": "Urbanisme",
     "annee": "Reportée",
-    "fiche": [["Maître d’ouvrage", "EPF 74"], ["Maître d’œuvre", "Agence Rheinert – Oxygen Architecture"], ["Calendrier", "Reportée"]],
+    "fiche": [
+      [
+        "Maître d’ouvrage",
+        "EPF 74"
+      ],
+      [
+        "Maître d’œuvre",
+        "Agence Rheinert – Oxygen Architecture"
+      ],
+      [
+        "Calendrier",
+        "Reportée"
+      ]
+    ],
     "texte": [
       "L’objectif de l’étude d’urbanisme était de revitaliser un grand site en friche à l’entrée de la ville. Le projet s’est concentré sur une mixité d’usages — logements, activités et commerces — et sur l’intégration d’un modèle de mobilité douce.",
       "Il s’agissait aussi de tester dans quelle mesure le modèle « Récipro-Cité » pouvait être adapté à des situations particulièrement complexes."
     ],
-    "images": ["foron-05", "foron-04", "foron-01", "foron-02", "foron-03"],
+    "images": [
+      "foron-05",
+      "foron-04",
+      "foron-01",
+      "foron-02",
+      "foron-03"
+    ],
     "vedette": false
   },
   {
@@ -285,13 +728,35 @@
     "lieu": "Vendœuvres (Indre)",
     "categorie": "Urbanisme",
     "annee": "2015 – en cours",
-    "fiche": [["Maître d’ouvrage", "CCIVB"], ["Maître d’œuvre", "Récipro-Cité – Agence Rheinert / Oxygen Architecture"], ["Surface de plancher", "2 840 m²"], ["Calendrier", "2015 – en cours"]],
+    "fiche": [
+      [
+        "Maître d’ouvrage",
+        "CCIVB"
+      ],
+      [
+        "Maître d’œuvre",
+        "Récipro-Cité – Agence Rheinert / Oxygen Architecture"
+      ],
+      [
+        "Surface de plancher",
+        "2 840 m²"
+      ],
+      [
+        "Calendrier",
+        "2015 – en cours"
+      ]
+    ],
     "texte": [
       "La communauté de communes a décidé de réaménager un secteur du village de Vendœuvres. Une démarche d’urbanisme a été développée dans le cadre d’une participation citoyenne et, avec notre bureau d’études partenaire Récipro-Cité, un dossier de certification « ÉcoQuartier » a été réalisé.",
       "La mission comprenait une étude du site et de ses contraintes, le développement et la pré-programmation d’orientations, ainsi qu’une participation citoyenne sous forme d’ateliers et de réunions publiques.",
       "Situé dans un environnement rural, le projet est un exemple d’urbanisme rural planifié en étroite concertation avec les habitants : une réponse sur mesure aux défis des zones rurales, qui tient compte de leurs caractéristiques."
     ],
-    "images": ["vendoeuvres-03", "vendoeuvres-01", "vendoeuvres-02", "vendoeuvres-04"],
+    "images": [
+      "vendoeuvres-03",
+      "vendoeuvres-01",
+      "vendoeuvres-02",
+      "vendoeuvres-04"
+    ],
     "vedette": false
   }
 ]

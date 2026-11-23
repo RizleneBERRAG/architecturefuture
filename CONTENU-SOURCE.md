@@ -36,3 +36,10 @@ Site source lu en entier le 23/11/2026 (Sitely 6.0.6) : accueil, pages agile / c
 - Logos des partenaires (remplacés par des liens texte).
 - Vidéo de la Tour de Babel.
 - Versions anglaise et allemande.
+
+## Qualité des photos (mise à jour du 23/11/2026)
+
+Les photos sont reprises dans la plus grande version publiée sur le site actuel (jusqu’à 2 400 px) et réencodées en WebP haute qualité, en trois tailles (800, 1 400, native).
+Une mesure de netteté montre que plusieurs images sont des agrandissements de petites captures : elles restent floues en grand format, quel que soit l’encodage.
+Les plus faibles : portrait de Patrick Stefan Rheinert (500 px), images de Kyodo Yushi, de la tour radar du Moucherotte, de Truite et Basilic, de l’EPF 74, des Logements Vienne, de Vendœuvres, de Champblanc et de Saint-Barthélemy-de-Vals.
+→ Demander à l’agence les fichiers originaux (photos et perspectives en haute définition) et un portrait récent.

@@ -128,7 +128,7 @@
       for (var i = 1; i < n; i++) {
         tl.to(steps[i - 1], { opacity: 0, y: -40, duration: 0.4 }, i)
           .fromTo(imgs[i], { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1, ease: 'power2.inOut' }, i - 0.3)
-          .fromTo($('img', imgs[i]), { scale: 1.25 }, { scale: 1, duration: 1.2, ease: 'power2.out' }, i - 0.3)
+          .fromTo($('img', imgs[i]), { scale: 1.08 }, { scale: 1, duration: 1.2, ease: 'power2.out' }, i - 0.3)
           .fromTo(steps[i], { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5 }, i + 0.2);
       }
       tl.to({}, { duration: 0.6 });

@@ -37,15 +37,29 @@ NAV = [
 ]
 
 E = html.escape
-VERSION = "7"
+VERSION = "8"
+
+
+SIZES = json.loads((OUT / "img" / "sizes.json").read_text(encoding="utf-8"))
+
+
+def srcset(name):
+    """Toutes les tailles réellement disponibles d’une photo (800, 1400, native jusqu’à 2400)."""
+    ws = SIZES.get(name, [])
+    native = max(ws) if ws else 0
+    parts = []
+    for w in ws:
+        f = f"img/{name}.webp" if w == native else f"img/{name}-{'s' if w == 800 else 'm'}.webp"
+        parts.append(f"{f} {w}w")
+    return ", ".join(parts)
 
 
 def img(name, alt="", sizes="100vw", cls="", eager=False, attrs=""):
-    small = OUT / "img" / f"{name}-s.webp"
-    srcset = f' srcset="img/{name}-s.webp 800w, img/{name}.webp 1800w" sizes="{sizes}"' if small.exists() else ""
+    ss = srcset(name)
+    srcs = f' srcset="{ss}" sizes="{sizes}"' if ss.count("w,") >= 1 else ""
     c = f' class="{cls}"' if cls else ""
     load = 'fetchpriority="high"' if eager else 'loading="lazy" decoding="async"'
-    return f'<img src="img/{name}.webp"{srcset} alt="{E(alt)}"{c} {load}{attrs}>'
+    return f'<img src="img/{name}.webp"{srcs} alt="{E(alt)}"{c} {load}{attrs}>'
 
 
 def alt_for(p, i=0):
@@ -89,8 +103,8 @@ def index_block():
     )
 
 
-HPANELS = ["grunbox-vienne", "tiny-house-urbaine", "logements-caluire", "logements-vienne", "truite-et-basilic",
-           "judo-club-lyon-6", "tour-radar-moucherotte", "bureaux-epf-74"]
+HPANELS = ["grunbox-vienne", "tiny-house-urbaine", "logements-caluire", "maison-jarret", "residence-intergenerationnelle-decines",
+           "judo-club-lyon-6", "logements-vienne", "couzon-au-mont-d-or"]
 
 
 def hpanels():
@@ -250,7 +264,7 @@ def project_page(i, p):
     title_html = "".join(f'<span class="line"><span>{E(t)}</span></span>' for t in title_lines)
     body = f"""
 <section class="page-hero">
-  <div class="bg" data-speed="8">{img(p['images'][0], alt_for(p), '100vw', eager=True)}</div>
+  <div class="bg" data-speed="5">{img(p['images'][0], alt_for(p), '100vw', eager=True)}</div>
   <div class="content">
     <p class="eyebrow light">Réalisation {i + 1:02d} / {len(PROJETS):02d} — {E(p['categorie'])}</p>
     <h1 class="display split">{title_html}</h1>
@@ -273,7 +287,7 @@ def project_page(i, p):
   <div class="wrap"><a class="prev-link" href="projet-{prev_p['slug']}.html"><span class="mono">← Précédent</span><span class="h3">{E(prev_p['titre'])}</span></a></div>
 </section>
 <a class="next-proj" href="projet-{next_p['slug']}.html" data-cursor="Suivant">
-  <div class="bg" data-speed="8">{img(next_p['images'][0], alt_for(next_p), '100vw')}</div>
+  <div class="bg" data-speed="5">{img(next_p['images'][0], alt_for(next_p), '100vw')}</div>
   <div class="content"><span class="mono">Réalisation suivante — {E(next_p['lieu'])}</span><span class="display" style="display:block">{E(next_p['titre'])}</span></div>
 </a>
 """
