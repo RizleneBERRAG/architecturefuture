@@ -23,7 +23,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 OUT = ROOT / "docs"
 SITE = "architecture4future"
-VERSION = "11"
+VERSION = "23"
 
 PROJETS = json.loads((SRC / "projets.json").read_text(encoding="utf-8"))
 BY_SLUG = {p["slug"]: p for p in PROJETS}
@@ -59,11 +59,12 @@ def alt_for(p, i=0):
     return f"{p['titre']} — {p['sous_titre'].lower()}" if i == 0 else f"{p['titre']}, vue {i + 1}"
 
 
-def card(slug, photo=None, sizes="(max-width: 860px) 100vw, 50vw"):
+def frame(slug, photo=None, label=None):
+    """Vignette de pellicule pointant vers une fiche projet."""
     p = BY_SLUG[slug]
     return (
-        f'<a class="card" href="projet-{slug}.html">{img(photo or p["images"][0], alt_for(p), sizes)}'
-        f'<span class="lbl"><b>{E(p["titre"])}</b><span>{E(p["categorie"])} · {E(p["lieu"])}</span></span></a>'
+        f'<a class="frame" href="projet-{slug}.html"><div class="ph">{img(photo or p["images"][0], alt_for(p), "(max-width: 760px) 80vw, 40vw")}</div>'
+        f'<div class="cap"><b>{E(label or p["titre"])}</b><span class="mono">{E(p["annee"])}</span></div></a>'
     )
 
 
@@ -71,19 +72,20 @@ def index_block():
     cats = {}
     for p in PROJETS:
         cats[p["categorie"]] = cats.get(p["categorie"], 0) + 1
-    btns = [f'<button type="button" data-filter="tout" aria-pressed="true">Tout <span class="count">{len(PROJETS)}</span></button>']
-    btns += [f'<button type="button" data-filter="{E(c)}" aria-pressed="false">{E(c)} <span class="count">{cats[c]}</span></button>' for c in ORDER if c in cats]
+    btns = [f'<button type="button" data-filter="tout" aria-pressed="true">Tout<sup>{len(PROJETS)}</sup></button>']
+    btns += [f'<button type="button" data-filter="{E(c)}" aria-pressed="false">{E(c)}<sup>{cats[c]}</sup></button>' for c in ORDER if c in cats]
     tiles = []
-    for p in PROJETS:
+    for i, p in enumerate(PROJETS, 1):
         tiles.append(
-            f'<a class="tile" href="projet-{p["slug"]}.html" data-cat="{E(p["categorie"])}">'
-            f'<div class="ph">{img(p["images"][0], alt_for(p), "(max-width: 560px) 100vw, (max-width: 1060px) 50vw, 33vw")}<span class="tag">{E(p["categorie"])}</span></div>'
-            f'<h3>{E(p["titre"])}</h3><p>{E(p["lieu"])} · {E(p["annee"])}</p></a>'
+            f'<a class="tile rv" href="projet-{p["slug"]}.html" data-cat="{E(p["categorie"])}">'
+            f'<div class="ph">{img(p["images"][0], alt_for(p), "(max-width: 760px) 100vw, (max-width: 960px) 50vw, 33vw")}'
+            f'<span class="num mono">{i:02d}</span><span class="yr mono">{E(p["annee"])}</span></div>'
+            f'<h3>{E(p["titre"])}</h3><p>{E(p["categorie"])} · {E(p["lieu"])}</p></a>'
         )
     return (
         f'<div class="filters" role="group" aria-label="Filtrer les réalisations">{"".join(btns)}</div>'
         '<p class="filter-live sr-only" aria-live="polite"></p>'
-        f'<div class="grid rv-group">{"".join(tiles)}</div>'
+        f'<div class="frames">{"".join(tiles)}</div>'
     )
 
 
@@ -96,9 +98,8 @@ def macros(text):
             sizes = parts[2] if len(parts) > 2 and parts[2] else "100vw"
             cls = parts[3] if len(parts) > 3 else ""
             return img(name, alt, sizes, cls, len(parts) > 4 and parts[4] == "eager")
-        if kind == "card":
-            return card(parts[0], parts[1] if len(parts) > 1 and parts[1] else None,
-                        parts[2] if len(parts) > 2 else "(max-width: 860px) 50vw, 25vw")
+        if kind == "frame":
+            return frame(parts[0], parts[1] if len(parts) > 1 and parts[1] else None, parts[2] if len(parts) > 2 and parts[2] else None)
         if kind == "index":
             return index_block()
         if kind == "link":
@@ -118,9 +119,11 @@ def layout(meta, body, nav_key):
     full_title = title if title.startswith(SITE) else f"{title} — {SITE}, architecte à Vienne"
     desc = meta.get("description", "")
     cur = lambda k: ' aria-current="page"' if k == nav_key else ""
-    nav = "".join(f'<a href="{h}"{cur(k)}>{l}</a>' for k, h, l in NAV)
-    nav += f'<a class="btn ocre" href="contact.html"{cur("contact")}>Contact</a>'
-    og = meta.get("og", "img/home-06.webp")
+    links = NAV + [("contact", "contact.html", "Contact")]
+    nav = "".join(f'<a href="{h}"{cur(k)}>{l}</a>' for k, h, l in links)
+    menu = "".join(f'<a href="{h}"{cur(k)}><span class="mono">{i:02d}</span>{l}</a>' for i, (k, h, l) in enumerate([("index", "index.html", "Accueil")] + links, 1))
+    og = meta.get("og", "img/gere-08.webp")
+    home = ' class="home"' if nav_key == "index" else ""
     return f"""<!doctype html>
 <html lang="fr">
 <head>
@@ -131,39 +134,35 @@ def layout(meta, body, nav_key):
 <meta property="og:title" content="{E(full_title)}">
 <meta property="og:description" content="{E(desc)}">
 <meta property="og:image" content="{og}">
-<meta name="theme-color" content="#3f5a34">
+<meta name="theme-color" content="#0f1510">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Work+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono&display=swap">
 <link rel="stylesheet" href="assets/style.css?v={VERSION}">
-<style>.sr-only{{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}</style>
 </head>
-<body>
-<a class="skip" href="#contenu">Aller au contenu</a>
-<header class="site-header">
-  <div class="w">
-    <a class="logo" href="index.html" aria-label="{SITE}, accueil">{LOGO}</a>
-    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav"><span class="lbl">Menu</span><span class="bars" aria-hidden="true"></span></button>
-    <nav class="nav" id="nav" aria-label="Navigation principale">{nav}</nav>
-  </div>
+<body{home}>
+<a class="skiplink" href="#contenu">Aller au contenu</a>
+<div class="grain" aria-hidden="true"></div>
+<div class="bars" aria-hidden="true"><i></i><i></i><div class="credit"><div><span class="a">{LOGO}</span><span class="b mono">présente</span></div></div></div>
+<button class="intro-skip mono" type="button" hidden>Passer l’intro</button>
+<header class="top">
+  <a class="logo" href="index.html" aria-label="{SITE}, accueil">{LOGO}</a>
+  <nav aria-label="Navigation principale">{nav}</nav>
+  <button class="menu-btn mono" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
 </header>
+<div class="menu" id="menu">{menu}<p class="mono">grünboX-Vienne · 75 rue Victor Faugier · 09 86 57 25 44</p></div>
 <main id="contenu">
 {body}
 </main>
-<footer class="site-footer">
-  <div class="w">
-    <div class="foot">
-      <div><h2>Parlons de votre projet</h2><a class="btn ocre" href="contact.html">Écrire à l’agence <span class="arr">→</span></a></div>
-      <div><small>Agence</small><p>grünboX-Vienne<br>75 rue Victor Faugier<br>38200 Vienne</p></div>
-      <div><small>Contact</small><p><a href="tel:+33986572544">09 86 57 25 44</a><br><a href="mailto:contact@architecturefuture.fr">contact@architecturefuture.fr</a></p>
-        <div class="social"><a href="https://www.instagram.com/archi4future/" aria-label="Instagram" rel="noopener" target="_blank">{ICON_IG}</a><a href="https://fr.linkedin.com/in/patrick-stefan-rheinert-3ba51641" aria-label="LinkedIn" rel="noopener" target="_blank">{ICON_IN}</a></div></div>
-      <div><small>Le site</small><ul><li><a href="competences.html">Compétences</a></li><li><a href="realisations.html">Réalisations</a></li><li><a href="vegetal.html">Le végétal</a></li><li><a href="agence.html">L’agence</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-    </div>
-    <div class="foot-bottom"><span class="logo">{LOGO}</span><span>SAS d’architecture au capital de 4 444 € · SIRET 892 007 444 · Inscrite à l’Ordre des architectes</span><a href="mentions-legales.html">Mentions légales</a></div>
-  </div>
+<footer class="foot mono">
+  <span>{SITE} · SAS d’architecture au capital de 4 444 € · SIRET 892 007 444 · Inscrite à l’Ordre des architectes</span>
+  <span><a href="https://www.instagram.com/archi4future/" rel="noopener" target="_blank">Instagram ↗</a> · <a href="https://fr.linkedin.com/in/patrick-stefan-rheinert-3ba51641" rel="noopener" target="_blank">LinkedIn ↗</a> · <a href="mentions-legales.html">Mentions légales</a></span>
 </footer>
+<script src="assets/vendor/gsap.min.js" defer></script>
+<script src="assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="assets/vendor/lenis.min.js" defer></script>
 <script src="assets/site.js?v={VERSION}" defer></script>
 </body>
 </html>
@@ -181,6 +180,15 @@ def parse_page(path):
     return meta, body
 
 
+def lines(text):
+    """Coupe un titre en deux lignes équilibrées pour l’animation."""
+    words = text.split(" ")
+    if len(words) < 3:
+        return f'<span class="l"><span>{E(text)}</span></span>'
+    mid = (len(words) + 1) // 2
+    return "".join(f'<span class="l"><span>{E(" ".join(w))}</span></span>' for w in (words[:mid], words[mid:]))
+
+
 def project_page(i, p):
     prev_p, next_p = PROJETS[i - 1], PROJETS[(i + 1) % len(PROJETS)]
     facts = "".join(f"<div><dt>{E(k)}</dt><dd>{E(v)}</dd></div>" for k, v in p["fiche"])
@@ -188,46 +196,36 @@ def project_page(i, p):
         facts = f"<div><dt>Lieu</dt><dd>{E(p['lieu'])}</dd></div>" + facts
     facts += f"<div><dt>Catégorie</dt><dd>{E(p['categorie'])}</dd></div>"
     texte = "".join(f"<p>{E(t)}</p>" for t in p["texte"])
-    n_img = len(p["images"])
-    left = (n_img - 3) % 3 if n_img > 3 else 0
-
-    def span(k):
-        if k == n_img - 1 and n_img > 3 and left:
-            return ' style="grid-column: span %d"' % (3 if left == 1 else 2)
-        return ""
+    n = len(p["images"])
     shots = "".join(
-        f'<button type="button"{span(k)} data-full="img/{n}.webp" aria-label="Agrandir la photo {k + 1}">'
-        f'{img(n, alt_for(p, k), "(max-width: 860px) 100vw, 66vw" if k == 0 else "(max-width: 860px) 50vw, 33vw")}</button>'
-        for k, n in enumerate(p["images"])
+        f'<button class="frame" type="button" data-full="img/{nm}.webp" aria-label="Agrandir la photo {k + 1}">'
+        f'<div class="ph">{img(nm, alt_for(p, k), "(max-width: 760px) 80vw, 40vw")}</div>'
+        f'<div class="cap"><b>Plan {k + 1:02d}</b><span class="mono">{k + 1} / {n}</span></div></button>'
+        for k, nm in enumerate(p["images"])
     )
-    pn = lambda q, cls, lab: (
-        f'<a class="{cls}" href="projet-{q["slug"]}.html"><div class="ph">{img(q["images"][0], "", "120px")}</div>'
-        f'<div class="t"><small>{lab}</small><b>{E(q["titre"])}</b></div></a>'
-    )
+    plural = "s" if n > 1 else ""
     body = f"""
-<section class="hero small">
-  <div class="ph">{img(p['images'][0], alt_for(p), '100vw', eager=True)}</div>
-  <div class="panel">
-    <p class="crumbs"><a href="realisations.html">Réalisations</a> · {E(p['categorie'])}</p>
-    <h1>{E(p['titre'])}</h1>
-    <p class="lede" style="margin:0">{E(p['sous_titre'])}. <span class="small">{E(p['lieu'])} · {E(p['annee'])}</span></p>
-  </div>
-</section>
-<section class="sec" style="padding-top:0">
-  <div class="w proj">
-    <aside class="facts rv"><dl>{facts}</dl></aside>
-    <div class="txt rv">{texte}</div>
-  </div>
-</section>
-<section class="sec cream2">
-  <div class="w">
-    <div class="sec-head"><h2>Images du projet</h2><p class="small" style="margin:0">{len(p['images'])} images · cliquer pour agrandir</p></div>
-    <div class="gal rv-group">{shots}</div>
-  </div>
+<section class="shot short">
+  <div class="bg">{img(p['images'][0], alt_for(p), '100vw', eager=True)}</div>
+  <div class="title"><span class="kick mono">Réalisation {i + 1:02d} / {len(PROJETS):02d} — {E(p['categorie'])}</span><h1>{lines(p['titre'])}</h1></div>
+  <p class="subtitle"><span>{E(p['sous_titre'])}. {E(p['lieu'])}, {E(p['annee'])}.</span></p>
+  <span class="tc mono">Plan 01</span><span class="scroll mono">Défiler</span>
 </section>
 <section class="sec">
-  <div class="w pn">{pn(prev_p, "prev", "← Réalisation précédente")}{pn(next_p, "next", "Réalisation suivante →")}</div>
+  <div class="w two">
+    <div class="side rv"><p class="lab mono">Fiche technique</p><dl class="sheet">{facts}</dl></div>
+    <div class="prose rv">{texte}</div>
+  </div>
 </section>
+<section class="film">
+  <div class="head rv"><div><p class="lab mono">Les images</p><h2>{n} plan{plural}</h2></div><p>Cliquez sur une image pour l’agrandir.</p></div>
+  <div class="reel-wrap"><div class="reel">{shots}</div></div>
+</section>
+<a class="prevlink" href="projet-{prev_p['slug']}.html"><span class="mono">← Réalisation précédente</span><b>{E(prev_p['titre'])}</b></a>
+<a class="next" href="projet-{next_p['slug']}.html">
+  <div class="bg">{img(next_p['images'][0], alt_for(next_p), '100vw')}</div>
+  <div class="in"><span class="mono">Prochaine réalisation — {E(next_p['lieu'])}</span><b>{E(next_p['titre'])}</b></div>
+</a>
 """
     meta = {
         "title": p["titre"],

@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>architecture4future — prototype cinéma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+:root{--night:#0f1510;--moss:#3f5a34;--olive:#7d8a3c;--ocre:#d99a3d;--sage:#dde3cf;--cream:#f6f1e3;--ink:#22301e;--serif:"Young Serif",Georgia,serif;--sans:"Work Sans",Arial,sans-serif;--mono:"IBM Plex Mono",monospace;--ease:cubic-bezier(.7,0,.2,1)}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--night);color:var(--cream);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;width:100%;height:100%;object-fit:cover}a{color:inherit;text-decoration:none}p{margin:0}h1,h2,h3{margin:0;font-weight:400}
+.mono{font:400 12px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase}
+
+/* Grain de pellicule (texture fixe, très légère) */
+.grain{position:fixed;inset:-50%;z-index:90;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain 1s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-4%,3%)}40%{transform:translate(3%,-2%)}60%{transform:translate(-2%,-4%)}80%{transform:translate(4%,2%)}100%{transform:translate(0,0)}}
+
+/* Barre du haut */
+.top{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;justify-content:space-between;align-items:center;padding:22px clamp(16px,3vw,36px);mix-blend-mode:difference;color:#fff}
+.logo{font:400 22px/1 var(--serif)}.logo b{font-weight:400;color:var(--ocre)}
+.top nav{display:flex;gap:26px;font-weight:500;font-size:14px}
+.top nav a{position:relative}.top nav a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease)}
+.top nav a:hover::after{transform:scaleX(1);transform-origin:left}
+
+/* Ouverture façon film */
+.opening{position:fixed;inset:0;z-index:100;pointer-events:none}
+.opening .bar{position:absolute;left:0;right:0;height:50%;background:#000;transition:transform 1.6s var(--ease)}
+.opening .bar.t{top:0}.opening .bar.b{bottom:0}
+.opening .credit{position:absolute;inset:0;display:grid;place-items:center;text-align:center;transition:opacity .8s}
+.opening .credit span{display:block;opacity:0;transform:translateY(10px);transition:opacity 1s,transform 1.2s var(--ease)}
+.opening .credit .a{font:400 clamp(28px,4vw,52px)/1 var(--serif)}.opening .credit .a b{color:var(--ocre);font-weight:400}
+.opening .credit .b{margin-top:16px;color:#bbb}
+.opening.s1 .credit span{opacity:1;transform:none}.opening.s1 .credit .b{transition-delay:.5s}
+.opening.s2 .credit{opacity:0}
+.opening.s2 .bar.t{transform:translateY(-88%)}.opening.s2 .bar.b{transform:translateY(88%)}
+.opening.s3 .bar.t{transform:translateY(-100%)}.opening.s3 .bar.b{transform:translateY(100%)}
+.skip{position:fixed;right:20px;bottom:20px;z-index:101;pointer-events:auto;background:none;border:1px solid rgba(255,255,255,.4);color:#fff;font:400 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;padding:10px 12px;cursor:pointer}
+.opening.done,.skip.done{display:none}
+
+/* Plan d’ouverture */
+.hero{position:relative;height:100svh;min-height:600px;overflow:hidden}
+.hero .bg{position:absolute;inset:0}.hero .bg img{transform:scale(1.18);transition:transform 9s cubic-bezier(.2,.6,.2,1)}
+.ready .hero .bg img{transform:scale(1)}
+.hero::after{content:"";position:absolute;inset:0;background:rgba(10,14,10,.38)}
+.hero .title{position:absolute;z-index:2;left:clamp(16px,6vw,96px);right:clamp(16px,6vw,96px);bottom:22vh}
+.hero h1{font:400 clamp(46px,8.4vw,140px)/.98 var(--serif);letter-spacing:-.01em;max-width:13ch}
+.hero h1 .l{display:block;overflow:hidden;padding-bottom:.06em}.hero h1 .l span{display:block;transform:translateY(105%);transition:transform 1.6s var(--ease)}
+.hero h1 em{font-style:normal;color:var(--ocre)}
+.ready .hero h1 .l span{transform:none}.ready .hero h1 .l:nth-child(2) span{transition-delay:.15s}.ready .hero h1 .l:nth-child(3) span{transition-delay:.3s}
+.subtitle{position:absolute;z-index:3;left:50%;bottom:7vh;transform:translateX(-50%);text-align:center;width:min(92vw,780px)}
+.subtitle span{display:inline;background:rgba(0,0,0,.62);padding:6px 12px;font:400 clamp(16px,1.5vw,20px)/1.9 var(--sans);box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.hero .subtitle{opacity:0;transition:opacity 1.2s 1.4s}.ready .hero .subtitle{opacity:1}
+.hero .tc{position:absolute;z-index:3;left:clamp(16px,3vw,36px);bottom:22px;color:#ddd}
+.hero .scroll{position:absolute;z-index:3;right:clamp(16px,3vw,36px);bottom:22px;color:#ddd;display:flex;gap:10px;align-items:center}
+.hero .scroll::after{content:"";width:1px;height:34px;background:#ddd;transform-origin:top;animation:cue 2.2s var(--ease) infinite}
+@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* Scènes épinglées (histoire de la grünboX) */
+.story{position:relative}
+.stage{position:relative;height:100svh;overflow:hidden;background:#000}
+.scene{position:absolute;inset:0;overflow:hidden}
+.scene img{will-change:transform}
+.scene::after{content:"";position:absolute;inset:0;background:rgba(10,14,10,.28)}
+.scene:not(:first-child){clip-path:inset(0 0 0 100%)}
+.chapter{position:absolute;z-index:4;left:clamp(16px,3vw,36px);top:86px;color:#eee;display:flex;gap:14px;align-items:center}
+.chapter i{width:34px;height:1px;background:var(--ocre)}
+.subs{position:absolute;z-index:4;left:0;right:0;bottom:9vh;height:120px}
+.sub{position:absolute;left:0;right:0;margin:0 auto;bottom:0;transform:translateY(12px);width:min(92vw,820px);text-align:center;opacity:0}
+.sub span{background:rgba(0,0,0,.62);padding:6px 12px;font:400 clamp(18px,1.8vw,24px)/1.9 var(--sans);box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.sub:first-child{opacity:1;transform:none}
+.counter{position:absolute;z-index:4;right:clamp(16px,3vw,36px);top:86px;color:#eee}
+.bigfig{position:absolute;z-index:4;right:clamp(16px,5vw,80px);top:50%;transform:translateY(-50%);text-align:right;opacity:0}
+.bigfig b{display:block;font:400 clamp(80px,14vw,220px)/.9 var(--serif);color:var(--ocre);font-weight:400}
+.bigfig span{font-size:clamp(15px,1.3vw,18px);color:#eee}
+.progress{position:absolute;z-index:4;left:clamp(16px,3vw,36px);right:clamp(16px,3vw,36px);bottom:26px;height:1px;background:rgba(255,255,255,.2)}
+.progress i{position:absolute;inset:0;background:var(--ocre);transform:scaleX(0);transform-origin:left}
+
+/* Principes : fondus de couleur */
+.colors{position:relative}
+.cstage{position:relative;height:100svh;overflow:hidden;display:grid;place-items:center;text-align:center;background:var(--sage);color:var(--ink)}
+.cword{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 20px;opacity:0}
+.cword:first-child{opacity:1}
+.cword .n{font:400 12px/1 var(--mono);letter-spacing:.2em;margin-bottom:22px}
+.cword h2{font:400 clamp(64px,15vw,250px)/.9 var(--serif);letter-spacing:-.02em}
+.cword p{margin-top:22px;font-size:clamp(17px,1.5vw,21px);max-width:30em}
+
+/* Pellicule des réalisations */
+.film{background:var(--night);padding:13vh 0 10vh;overflow:hidden;min-height:100svh}
+.film .head{padding:0 clamp(16px,6vw,96px);margin-bottom:56px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.film h2{font:400 clamp(40px,5.6vw,88px)/1 var(--serif)}.film h2 em{font-style:normal;color:var(--ocre)}
+.reel{display:flex;width:max-content;background:#050705;padding:34px 0;position:relative}
+.reel::before,.reel::after{content:"";position:absolute;left:0;right:0;height:18px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='18'%3E%3Crect x='9' y='4' width='16' height='10' rx='2' fill='%23f6f1e3' fill-opacity='.85'/%3E%3C/svg%3E");background-repeat:repeat-x}
+.reel::before{top:8px}.reel::after{bottom:8px}
+.frame{flex:none;width:clamp(280px,38vw,620px);margin-right:14px;position:relative}
+.frame .ph{aspect-ratio:16/10;overflow:hidden;background:#222}
+.frame img{transition:transform 1.4s var(--ease),filter .8s}
+.frame:hover img{transform:scale(1.06)}
+.frame .cap{position:absolute;left:14px;bottom:14px;right:14px;display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+.frame .cap b{font:400 clamp(20px,2vw,28px)/1.1 var(--serif);font-weight:400;background:rgba(0,0,0,.6);padding:4px 10px}
+.frame .cap span{background:var(--ocre);color:var(--ink);padding:4px 8px}
+.film .end{display:flex;justify-content:center;margin-top:56px}
+.btn{display:inline-flex;align-items:center;gap:14px;padding:16px 26px;border:1px solid currentColor;font-weight:600;font-size:15px;position:relative;overflow:hidden;isolation:isolate;transition:color .5s var(--ease)}
+.btn::before{content:"";position:absolute;inset:0;background:var(--ocre);transform:scaleY(0);transform-origin:bottom;transition:transform .5s var(--ease);z-index:-1}
+.btn:hover{color:var(--ink);border-color:var(--ocre)}.btn:hover::before{transform:scaleY(1)}
+
+/* Plan large + citation */
+.quote{position:relative;height:120svh;overflow:hidden;display:flex;align-items:center}
+.quote .bg{position:absolute;inset:-12% 0}
+.quote::after{content:"";position:absolute;inset:0;background:rgba(10,14,10,.5)}
+.quote blockquote{position:relative;z-index:2;margin:0 clamp(16px,6vw,96px);font:400 clamp(30px,4.4vw,70px)/1.15 var(--serif);max-width:20ch}
+.quote blockquote .w{opacity:.15;transition:opacity .2s}
+.quote cite{display:block;position:relative;z-index:2;margin:28px clamp(16px,6vw,96px) 0;font-style:normal}
+
+/* Générique de fin */
+.credits{background:#000;padding:22vh 20px 16vh;text-align:center}
+.credits .blk{margin:0 auto 9vh;max-width:640px}
+.credits .role{color:#9a9a8f;margin-bottom:12px}
+.credits .name{font:400 clamp(24px,2.6vw,38px)/1.25 var(--serif)}
+.credits .name em{font-style:normal;color:var(--ocre)}
+.credits .list{font-size:17px;color:#d8d4c6;line-height:1.9}
+.credits .fin{font:400 clamp(56px,9vw,140px)/1 var(--serif);color:var(--ocre);margin:14vh 0 4vh}
+.credits .contact{display:flex;flex-direction:column;gap:12px;align-items:center;font:400 clamp(20px,2vw,28px)/1.3 var(--serif)}
+.credits .contact a:hover{color:var(--ocre)}
+
+.rv{opacity:0;transform:translateY(30px);transition:opacity 1.2s ease,transform 1.4s var(--ease)}.rv.in{opacity:1;transform:none}
+
+@media (max-width:760px){
+  .top nav{display:none}
+  .chapter{top:70px;font-size:10.5px}.counter{display:none}
+  .film{padding-top:120px}
+  .bigfig{right:16px;left:16px;text-align:left;top:auto;bottom:26vh;transform:none}
+  .frame{width:80vw}
+  .film .reel-wrap{overflow-x:auto;scroll-snap-type:x mandatory}.frame{scroll-snap-align:center}
+}
+@media (prefers-reduced-motion:reduce){
+  .grain,.hero .scroll::after{animation:none}
+  .opening{display:none}
+  .hero h1 .l span{transform:none}.hero .subtitle{opacity:1}
+  .rv{opacity:1;transform:none}.quote blockquote .w{opacity:1}
+}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<div class="opening" aria-hidden="true">
+  <div class="bar t"></div><div class="bar b"></div>
+  <div class="credit"><div><span class="a">architecture<b>4</b>future</span><span class="b mono">présente</span></div></div>
+</div>
+<button class="skip" type="button">Passer l’intro</button>
+
+<header class="top">
+  <a class="logo" href="#">architecture<b>4</b>future</a>
+  <nav><a href="../competences.html">Compétences</a><a href="../realisations.html">Réalisations</a><a href="../vegetal.html">Le végétal</a><a href="../agence.html">L’agence</a><a href="../contact.html">Contact</a></nav>
+</header>
+
+<section class="hero">
+  <div class="bg"><img src="../img/gere-08.webp" alt="La Gère et ses anciennes usines, à Vienne"></div>
+  <div class="title"><h1><span class="l"><span>Des bâtiments</span></span><span class="l"><span>qui poussent</span></span><span class="l"><span>avec la <em>nature</em>.</span></span></h1></div>
+  <p class="subtitle"><span>Vienne, vallée de la Gère. Une agence d’architecture agile, citoyenne, sobre et végétale.</span></p>
+  <span class="tc mono">Plan 01 — 45°31′N 4°52′E</span>
+  <span class="scroll mono">Défiler</span>
+</section>
+
+<section class="story" aria-label="Chapitre 1 : la grünboX-Vienne">
+  <div class="stage">
+    <div class="scene"><img src="../img/grunbox-02.webp" alt="Façade de l’ancienne usine, rue Victor Faugier"></div>
+    <div class="scene"><img src="../img/grunbox-06.webp" alt="Chantier de réemploi dans la grande halle"></div>
+    <div class="scene"><img src="../img/grunbox-07.webp" alt="Le coworking en bois de réemploi"></div>
+    <div class="scene"><img src="../img/grunbox-08.webp" alt="Concert dans le tiers-lieu"></div>
+    <div class="scene"><img src="../img/grunbox-03.webp" alt="Passerelle entre la roche et le jardin"></div>
+    <div class="chapter mono"><i></i>Chapitre 1 — La grünboX-Vienne</div>
+    <div class="counter mono">01 / 05</div>
+    <div class="subs">
+      <p class="sub"><span>Une usine textile de la vallée de la Gère, inoccupée depuis plus de vingt ans.</span></p>
+      <p class="sub"><span>Nous y avons vu un potentiel caché. Le chantier commence par le réemploi.</span></p>
+      <p class="sub"><span>Le coworking et le tiers-lieu sont aménagés avec 90 % de matériaux en réemploi.</span></p>
+      <p class="sub"><span>Des logements, des bureaux, une salle pour tout le quartier.</span></p>
+      <p class="sub"><span>Et partout, le végétal : terrasses vertes, serres, champignonnière.</span></p>
+    </div>
+    <div class="bigfig"><b>−65 %</b><span>d’empreinte carbone par rapport à du neuf</span></div>
+    <div class="progress"><i></i></div>
+  </div>
+</section>
+
+<section class="colors" aria-label="Quatre principes">
+  <div class="cstage">
+    <div class="cword"><span class="n">Principe 01</span><h2>Agile</h2><p>Des espaces qui évoluent avec leurs habitants, avec un minimum de travaux.</p></div>
+    <div class="cword"><span class="n">Principe 02</span><h2>Citoyenne</h2><p>Des lieux de rencontre et d’entraide, à échelle humaine.</p></div>
+    <div class="cword"><span class="n">Principe 03</span><h2>Sobre</h2><p>Low-tech, réemploi, matériaux naturels.</p></div>
+    <div class="cword"><span class="n">Principe 04</span><h2>Végétale</h2><p>Des murs végétalisés aux toits verts.</p></div>
+  </div>
+</section>
+
+<section class="film">
+  <div class="head rv"><div><p class="mono" style="color:#9a9a8f;margin-bottom:14px">Chapitre 2 — Filmographie</p><h2>Dix-neuf projets,<br>une même <em>histoire</em>.</h2></div><p style="max-width:26em;color:#cfcabb">Du sommet du Vercors aux berges du Rhône : logements, bureaux, écoles, friches et jardins.</p></div>
+  <div class="reel-wrap">
+    <div class="reel">
+      <a class="frame" href="../projet-tiny-house-urbaine.html"><div class="ph"><img src="../img/tiny-02-m.webp" alt=""></div><div class="cap"><b>Tiny House Urbaine</b><span class="mono">2020</span></div></a>
+      <a class="frame" href="../projet-logements-caluire.html"><div class="ph"><img src="../img/caluire-01-m.webp" alt=""></div><div class="cap"><b>Logements Caluire</b><span class="mono">2015</span></div></a>
+      <a class="frame" href="../projet-maison-jarret.html"><div class="ph"><img src="../img/jarret-02-m.webp" alt=""></div><div class="cap"><b>Maison Jarret</b><span class="mono">2021–25</span></div></a>
+      <a class="frame" href="../projet-judo-club-lyon-6.html"><div class="ph"><img src="../img/judo-03-m.webp" alt=""></div><div class="cap"><b>Judo Club Lyon 6e</b><span class="mono">2016</span></div></a>
+      <a class="frame" href="../projet-residence-intergenerationnelle-decines.html"><div class="ph"><img src="../img/decines-03-m.webp" alt=""></div><div class="cap"><b>Résidence de Décines</b><span class="mono">2020</span></div></a>
+      <a class="frame" href="../projet-couzon-au-mont-d-or.html"><div class="ph"><img src="../img/couzon-02-m.webp" alt=""></div><div class="cap"><b>Projet Couzon</b><span class="mono">2016</span></div></a>
+      <a class="frame" href="../projet-vallee-de-la-gere.html"><div class="ph"><img src="../img/gere-07-m.webp" alt=""></div><div class="cap"><b>Vallée de la Gère</b><span class="mono">Étude</span></div></a>
+    </div>
+  </div>
+  <div class="end"><a class="btn" href="../realisations.html">Voir toute la filmographie →</a></div>
+</section>
+
+<section class="quote">
+  <div class="bg"><img src="../img/home-06.webp" alt="Terrasse sous pergola couverte de plantes"></div>
+  <div>
+    <blockquote data-words>Il ne s’agit pas de créer des objets de design achevés, mais de donner naissance à des espaces flexibles et vivants.</blockquote>
+    <cite class="mono">Patrick Stefan Rheinert, architecte-ingénieur</cite>
+  </div>
+</section>
+
+<section class="credits">
+  <div class="blk rv"><p class="role mono">Une agence</p><p class="name">architecture<em>4</em>future</p></div>
+  <div class="blk rv"><p class="role mono">Fondée par</p><p class="name">Patrick Stefan Rheinert</p><p class="list">architecte-ingénieur, RWTH Aix-la-Chapelle · urbanisme, INSA de Lyon</p></div>
+  <div class="blk rv"><p class="role mono">Avec</p><p class="list">Franck Revol, collaborateur CAO-DAO<br>Johanna Elisabeth Ritzki, étudiante en architecture</p></div>
+  <div class="blk rv"><p class="role mono">Think tank</p><p class="list">Sylvain Auvray · Marc Baietto · Sabine Bonnet<br>Alain Pappini · Michel Sauzet · Jean-Paul Savart</p></div>
+  <div class="blk rv"><p class="role mono">Distinctions</p><p class="list">Prix Économie Circulaire, Green Solutions Awards 2025<br>Prix Plan Climat, Vienne Condrieu Agglomération 2024<br>2e prix international Smart Cities, Le Monde 2017</p></div>
+  <div class="blk rv"><p class="role mono">Tourné à</p><p class="list">Vienne · Lyon · Vaulx-en-Velin · Décines · Caluire · Meyzieu<br>le Vercors · la Haute-Savoie · l’Indre</p></div>
+  <p class="fin rv">Votre projet ?</p>
+  <div class="contact rv"><a href="tel:+33986572544">09 86 57 25 44</a><a href="mailto:contact@architecturefuture.fr">contact@architecturefuture.fr</a><span class="mono" style="color:#9a9a8f;margin-top:14px">grünboX-Vienne · 75 rue Victor Faugier · 38200 Vienne</span></div>
+</section>
+
+<script src="../assets/vendor/gsap.min.js"></script>
+<script src="../assets/vendor/ScrollTrigger.min.js"></script>
+<script src="../assets/vendor/lenis.min.js"></script>
+<script>
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var body = document.body, op = document.querySelector('.opening'), skip = document.querySelector('.skip');
+  function finish(){ op.classList.add('s1','s2','s3'); body.classList.add('ready'); setTimeout(function(){ op.classList.add('done'); skip.classList.add('done'); }, 1700); }
+  if (reduce) { body.classList.add('ready'); op.classList.add('done'); skip.classList.add('done'); }
+  else {
+    setTimeout(function(){ op.classList.add('s1'); }, 200);
+    setTimeout(function(){ op.classList.add('s2'); body.classList.add('ready'); }, 1900);
+    setTimeout(function(){ op.classList.add('s3'); }, 3300);
+    setTimeout(function(){ op.classList.add('done'); skip.classList.add('done'); }, 5000);
+    skip.addEventListener('click', finish);
+  }
+
+  // Apparitions
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); }, {threshold:.15});
+  document.querySelectorAll('.rv').forEach(function(el){ reduce ? el.classList.add('in') : io.observe(el); });
+
+  // Citation mot à mot
+  var q = document.querySelector('[data-words]');
+  q.innerHTML = q.textContent.trim().split(/\s+/).map(function(w){ return '<span class="w">'+w+'</span>'; }).join(' ');
+
+  if (reduce || !window.gsap) { document.querySelectorAll('.quote .w').forEach(function(w){ w.style.opacity = 1; }); return; }
+  gsap.registerPlugin(ScrollTrigger);
+  var lenis = new Lenis({ lerp: .08 });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(function(t){ lenis.raf(t*1000); }); gsap.ticker.lagSmoothing(0);
+
+  // Plan d’ouverture : léger recul au défilement
+  gsap.to('.hero .title', { yPercent: -40, opacity: 0, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+
+  // Chapitre 1 : scènes épinglées
+  var scenes = gsap.utils.toArray('.scene'), subs = gsap.utils.toArray('.sub'), counter = document.querySelector('.counter');
+  var tl = gsap.timeline({ scrollTrigger: { trigger: '.story', start: 'top top', end: '+=' + (scenes.length * 100) + '%', pin: '.stage', scrub: .8,
+    onUpdate: function(st){ document.querySelector('.progress i').style.transform = 'scaleX(' + st.progress + ')';
+      counter.textContent = ('0' + Math.min(scenes.length, Math.floor(st.progress * scenes.length) + 1)).slice(-2) + ' / 0' + scenes.length; } } });
+  scenes.forEach(function(s, i){
+    tl.fromTo(s.querySelector('img'), { scale: 1.25 }, { scale: 1.02, ease: 'none', duration: 1.2 }, i === 0 ? 0 : i - 0.2);
+    if (i > 0) {
+      tl.fromTo(s, { clipPath: 'inset(0% 0% 0% 100%)' }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'power3.inOut', duration: .6 }, i - 0.2)
+        .to(subs[i-1], { opacity: 0, y: -12, duration: .2 }, i - 0.25)
+        .fromTo(subs[i], { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .25 }, i + 0.15);
+    }
+  });
+  tl.to('.bigfig', { opacity: 1, duration: .3 }, scenes.length - 0.6).to({}, { duration: .4 });
+
+  // Principes : fondus de couleur
+  var words = gsap.utils.toArray('.cword');
+  var colors = [['#dde3cf','#22301e'],['#7d8a3c','#f6f1e3'],['#d99a3d','#22301e'],['#3f5a34','#f6f1e3']];
+  var ct = gsap.timeline({ scrollTrigger: { trigger: '.colors', start: 'top top', end: '+=' + (words.length * 80) + '%', pin: '.cstage', scrub: .6 } });
+  words.forEach(function(w, i){
+    ct.fromTo(w.querySelector('h2'), { scale: .86 }, { scale: 1, duration: 1, ease: 'none' }, i);
+    if (i > 0) ct.to(words[i-1], { opacity: 0, y: -40, duration: .3 }, i - 0.15)
+      .to('.cstage', { backgroundColor: colors[i][0], color: colors[i][1], duration: .35 }, i - 0.15)
+      .fromTo(w, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: .3 }, i);
+  });
+
+  // Pellicule : défilement horizontal (bureau)
+  ScrollTrigger.matchMedia({ '(min-width: 761px)': function(){
+    var reel = document.querySelector('.reel');
+    gsap.to(reel, { x: function(){ return -(reel.scrollWidth - innerWidth + 96); }, ease: 'none',
+      scrollTrigger: { trigger: '.film', start: 'top top', end: function(){ return '+=' + (reel.scrollWidth - innerWidth); }, pin: '.film', scrub: .8, invalidateOnRefresh: true } });
+  }});
+
+  // Citation
+  gsap.to('.quote .bg', { yPercent: 10, ease: 'none', scrollTrigger: { trigger: '.quote', start: 'top bottom', end: 'bottom top', scrub: true } });
+  gsap.to('.quote .w', { opacity: 1, stagger: .1, ease: 'none', scrollTrigger: { trigger: '.quote blockquote', start: 'top 80%', end: 'bottom 40%', scrub: true } });
+})();
+</script>
+</body>
+</html>

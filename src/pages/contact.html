@@ -3,46 +3,41 @@ description: Contacter architecture4future, agence d’architecture à Vienne (I
 nav: contact
 og: img/grunbox-02.webp
 ---
-<section class="hero small">
-  <div class="ph">[[img:grunbox-02|Façade de la grünboX-Vienne, siège de l’agence|100vw||eager]]</div>
-  <div class="panel">
-    <span class="kicker">Contact</span>
-    <h1>Parlons de votre projet.</h1>
-    <p class="lede" style="margin:0">Un bâtiment à transformer, un logement à construire, une friche à faire revivre : écrivez-nous ou passez à la grünboX-Vienne.</p>
-  </div>
+<section class="shot short">
+  <div class="bg">[[img:grunbox-08|Le tiers-lieu de la grünboX-Vienne|100vw||eager]]</div>
+  <div class="title"><span class="kick mono">Contact</span><h1><span class="l"><span>Votre projet,</span></span><span class="l"><span>la <em>prochaine</em> scène.</span></span></h1></div>
+  <p class="subtitle"><span>Un bâtiment à transformer, un logement à construire, une friche à faire revivre.</span></p>
+  <span class="tc mono">grünboX-Vienne — tiers-lieu</span><span class="scroll mono">Défiler</span>
 </section>
 
-<section class="sec" style="padding-top:0">
+<section class="sec">
   <div class="w contact">
     <div class="rv">
       <div class="info">
-        <div class="row"><small>Téléphone</small><a href="tel:+33986572544">09 86 57 25 44</a></div>
-        <div class="row"><small>Courriel</small><a href="mailto:contact@architecturefuture.fr">contact@architecturefuture.fr</a></div>
-        <div class="row"><small>Agence</small><span class="big">grünboX-Vienne<br>75 rue Victor Faugier, 38200 Vienne</span></div>
+        <div class="row"><span class="mono">Téléphone</span><a href="tel:+33986572544">09 86 57 25 44</a></div>
+        <div class="row"><span class="mono">Courriel</span><a href="mailto:contact@architecturefuture.fr">contact@architecturefuture.fr</a></div>
+        <div class="row"><span class="mono">Agence</span><span class="big">grünboX-Vienne<br>75 rue Victor Faugier, 38200 Vienne</span></div>
       </div>
-      <div class="map">
-        <iframe title="Plan d’accès : 75 rue Victor Faugier, Vienne" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=4.8835%2C45.5195%2C4.9035%2C45.5295&amp;layer=mapnik&amp;marker=45.5245%2C4.8935"></iframe>
-      </div>
-      <p class="small" style="margin-top:8px"><a class="link" href="https://www.openstreetmap.org/search?query=75%20rue%20Victor%20Faugier%2C%2038200%20Vienne" rel="noopener" target="_blank">Ouvrir le plan ↗</a></p>
+      <div class="map"><iframe title="Plan d’accès : 75 rue Victor Faugier, Vienne" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=4.8835%2C45.5195%2C4.9035%2C45.5295&amp;layer=mapnik&amp;marker=45.5245%2C4.8935"></iframe></div>
+      <p class="mono" style="margin-top:10px;color:var(--grey)"><a class="ul" href="https://www.openstreetmap.org/search?query=75%20rue%20Victor%20Faugier%2C%2038200%20Vienne" rel="noopener" target="_blank">Ouvrir le plan ↗</a> · repère à vérifier</p>
     </div>
 
     <form class="form rv" id="contact-form" data-mail="contact@architecturefuture.fr" novalidate>
-      <h2 style="margin-bottom:20px">Écrire à l’agence</h2>
+      <p class="lab mono">Écrire à l’agence</p>
       <div class="row2">
         <div class="field"><label for="f-nom">Nom *</label><input id="f-nom" name="nom" autocomplete="name" required><p class="err">Indiquez votre nom.</p></div>
         <div class="field"><label for="f-tel">Téléphone</label><input id="f-tel" name="tel" type="tel" autocomplete="tel"><p class="err">Numéro invalide.</p></div>
       </div>
       <div class="field"><label for="f-email">Courriel *</label><input id="f-email" name="email" type="email" autocomplete="email" required><p class="err">Indiquez une adresse courriel valide.</p></div>
       <div class="row2">
-        <div class="field"><label for="f-projet">Votre projet</label>
-          <select id="f-projet" name="projet"><option value="">Choisir…</option><option>Construction neuve</option><option>Rénovation ou transformation</option><option>Bureaux, aménagement intérieur</option><option>Végétalisation</option><option>Étude urbaine, collectivité</option><option>Autre</option></select><p class="err"></p></div>
+        <div class="field"><label for="f-projet">Votre projet</label><select id="f-projet" name="projet"><option value="">Choisir…</option><option>Construction neuve</option><option>Rénovation ou transformation</option><option>Bureaux, aménagement intérieur</option><option>Végétalisation</option><option>Étude urbaine, collectivité</option><option>Autre</option></select><p class="err"></p></div>
         <div class="field"><label for="f-lieu">Lieu du projet</label><input id="f-lieu" name="lieu" autocomplete="address-level2"><p class="err"></p></div>
       </div>
       <div class="field"><label for="f-msg">Message *</label><textarea id="f-msg" name="message" required minlength="10"></textarea><p class="err">Décrivez votre projet en quelques mots.</p></div>
-      <button class="btn" type="submit">Envoyer le message <span class="arr">→</span></button>
+      <button class="btn solid" type="submit">Envoyer le message →</button>
       <p class="note">Le bouton ouvre votre messagerie avec le message prérempli. Vos données ne servent qu’à vous répondre.</p>
       <p class="note sent" hidden>Votre messagerie s’est ouverte : il ne reste qu’à envoyer le message.</p>
-      <div class="todo" style="margin-top:24px"><strong>À compléter avec l’agence</strong><p>Horaires ou modalités de rendez-vous, zone d’intervention précise.</p></div>
+      <div class="todo"><strong>À compléter avec l’agence</strong><p>Horaires ou modalités de rendez-vous, zone d’intervention précise.</p></div>
     </form>
   </div>
 </section>
