@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Piste C — Galerie</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap">
+<style>
+:root{--ink:#111;--grey:#8a8a8a;--line:#e5e5e5;--green:#2f6b3a}
+*{box-sizing:border-box}body{margin:0;background:#fff;color:var(--ink);font:400 16px/1.55 "Inter Tight",sans-serif}
+img{display:block;width:100%;height:100%;object-fit:cover}a{color:inherit;text-decoration:none}
+header{display:flex;justify-content:space-between;align-items:center;padding:24px 28px;font-size:15px}
+.logo{font-weight:600;letter-spacing:-.01em}.logo b{color:var(--green)}
+nav{display:flex;gap:26px;color:var(--grey)}nav a:first-child{color:var(--ink)}
+.wall{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:330px 330px;gap:6px;padding:0 6px}
+.wall a{position:relative;overflow:hidden}.wall a:nth-child(1){grid-column:span 2;grid-row:span 2}
+.wall span{position:absolute;left:12px;bottom:10px;color:#fff;font-size:13px;font-weight:500;background:rgba(0,0,0,.55);padding:4px 8px}
+.intro{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;padding:72px 28px 40px}
+.intro h1{grid-column:1/span 8;font-size:76px;line-height:.98;font-weight:500;letter-spacing:-.045em;margin:0}
+.intro p{grid-column:10/span 3;color:var(--grey);margin:0;align-self:end}
+.list{padding:0 28px 80px}.row{display:grid;grid-template-columns:60px 2fr 1fr 1fr 80px;gap:24px;padding:18px 0;border-top:1px solid var(--line);align-items:center}
+.row .t{font-size:26px;font-weight:500;letter-spacing:-.02em}.row span{color:var(--grey);font-size:14px}
+.vals{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink);margin:0 28px}
+.vals div{padding:24px 24px 40px 0}.vals b{font-weight:500;font-size:22px;display:block;margin-bottom:6px}.vals p{color:var(--grey);margin:0;font-size:15px}
+.green{margin:80px 28px;display:grid;grid-template-columns:1fr 1fr;gap:6px}.green div{height:560px}
+.green .txt{background:var(--green);color:#fff;padding:56px;display:flex;flex-direction:column;justify-content:flex-end}
+.green h2{font-size:52px;line-height:1;font-weight:500;letter-spacing:-.04em;margin:0 0 18px}
+footer{padding:28px;display:flex;justify-content:space-between;border-top:1px solid var(--line);font-size:14px;color:var(--grey)}
+.tag{position:fixed;left:16px;bottom:16px;background:#111;color:#fff;font:600 13px/1 "Inter Tight";padding:10px 14px;border-radius:4px}
+</style></head><body>
+<header><div class="logo">architecture<b>4</b>future</div><nav><a>Réalisations</a><a>Compétences</a><a>Le végétal</a><a>L’agence</a><a>Contact</a></nav></header>
+<section class="wall">
+ <a><img src="../img/grunbox-02.webp" alt=""><span>grünboX-Vienne</span></a>
+ <a><img src="../img/tiny-02-m.webp" alt=""><span>Tiny House Urbaine</span></a>
+ <a><img src="../img/jarret-02-m.webp" alt=""><span>Maison Jarret</span></a>
+ <a><img src="../img/caluire-01-m.webp" alt=""><span>Logements Caluire</span></a>
+ <a><img src="../img/grunbox-08-m.webp" alt=""><span>grünboX — tiers-lieu</span></a>
+</section>
+<section class="intro"><h1>Architecture agile, citoyenne, sobre et végétale.</h1><p>Agence d’architecture à Vienne fondée par Patrick Stefan Rheinert, architecte-ingénieur. 19 projets de 1989 à aujourd’hui.</p></section>
+<section class="list">
+ <div class="row"><span>01</span><div class="t">grünboX-Vienne</div><span>Vienne</span><span>Réhabilitation</span><span>2025</span></div>
+ <div class="row"><span>02</span><div class="t">Tiny House Urbaine</div><span>Vaulx-en-Velin</span><span>Habitat</span><span>2020</span></div>
+ <div class="row"><span>03</span><div class="t">Logements Caluire</div><span>Caluire-et-Cuire</span><span>Habitat</span><span>2015</span></div>
+ <div class="row"><span>04</span><div class="t">Maison Jarret</div><span>Décines-Charpieu</span><span>Habitat</span><span>2021–2025</span></div>
+ <div class="row"><span>05</span><div class="t">Judo Club Lyon 6e</div><span>Lyon</span><span>Équipement</span><span>2016</span></div>
+</section>
+<section class="vals"><div><b>Agile</b><p>Des espaces qui s’adaptent.</p></div><div><b>Citoyenne</b><p>Des lieux partagés.</p></div><div><b>Sobre</b><p>Low-tech et réemploi.</p></div><div><b>Végétale</b><p>Des plantes partout.</p></div></section>
+<section class="green"><div><img src="../img/home-06.webp" alt=""></div><div class="txt"><h2>Le végétal fait partie de l’architecture.</h2><p>Façades plantées, toits verts, serres, aquaponie : des bâtiments qui changent au fil des saisons.</p></div></section>
+<footer><span>architecture4future · 75 rue Victor Faugier, Vienne</span><span>09 86 57 25 44 · contact@architecturefuture.fr</span></footer>
+<div class="tag">Piste C — Galerie</div>
+</body></html>
