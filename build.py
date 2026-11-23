@@ -23,7 +23,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 OUT = ROOT / "docs"
 SITE = "architecture4future"
-VERSION = "23"
+VERSION = "25"
 
 PROJETS = json.loads((SRC / "projets.json").read_text(encoding="utf-8"))
 BY_SLUG = {p["slug"]: p for p in PROJETS}

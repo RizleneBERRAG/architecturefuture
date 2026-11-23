@@ -82,8 +82,10 @@ p { margin: 0; } h1, h2, h3 { margin: 0; font-weight: 400; } figure { margin: 0;
 .ready .l > span { transform: none; }
 .ready .l:nth-child(2) > span { transition-delay: .15s; } .ready .l:nth-child(3) > span { transition-delay: .3s; }
 h1 em, h2 em, .fin em { font-style: normal; color: var(--ocre); }
-.subtitle { position: absolute; z-index: 3; left: 0; right: 0; margin: 0 auto; bottom: 8vh; text-align: center; width: min(92vw, 800px); }
-.subtitle span, .sub span { background: rgba(0, 0, 0, .62); padding: 6px 12px; font: 400 clamp(16px, 1.6vw, 22px)/1.9 var(--sans); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+/* Sous-titre du plan d’ouverture : texte posé sous le titre, sans fond */
+.subtitle { position: absolute; z-index: 3; left: var(--gut); bottom: 11vh; max-width: min(36em, 84vw); display: flex; gap: 18px; align-items: baseline; }
+.subtitle::before { content: ""; flex: none; width: 40px; height: 2px; background: var(--ocre); transform: translateY(-5px); }
+.subtitle span { font: 400 clamp(16px, 1.4vw, 20px)/1.55 var(--sans); color: #f1ecdf; }
 .shot .subtitle { opacity: 0; transition: opacity 1.2s 1.2s; } .ready .shot .subtitle { opacity: 1; }
 .shot .tc { position: absolute; z-index: 3; left: clamp(16px, 3vw, 36px); bottom: 22px; color: #ddd; }
 .shot .scroll { position: absolute; z-index: 3; right: clamp(16px, 3vw, 36px); bottom: 22px; color: #ddd; display: flex; gap: 10px; align-items: center; }
@@ -95,26 +97,31 @@ h1 em, h2 em, .fin em { font-style: normal; color: var(--ocre); }
 .stage { position: relative; height: 100svh; overflow: hidden; background: #000; }
 .scene { position: absolute; inset: 0; overflow: hidden; isolation: isolate; }
 .scene img { will-change: transform; }
-.scene::after { content: ""; position: absolute; inset: 0; background: rgba(10, 14, 10, .3); }
+.scene::after { content: ""; position: absolute; inset: 0; background: rgba(10, 14, 10, .26); }
+/* Bandes noires de cinéma : les sous-titres vivent dans la bande du bas */
+.stage::before, .stage::after { content: ""; position: absolute; left: 0; right: 0; z-index: 3; background: #000; pointer-events: none; }
+.stage::before { top: 0; height: 9vh; } .stage::after { bottom: 0; height: 15vh; }
 .js .scene:not(:first-child) { clip-path: inset(0 0 0 100%); }
-.scene .txt { position: absolute; z-index: 3; left: var(--gut); top: 22vh; max-width: min(560px, 86vw); }
+.scene .txt { position: absolute; z-index: 3; left: var(--gut); top: 24vh; max-width: min(560px, 86vw); }
 .scene .txt h2 { font: 400 clamp(36px, 5vw, 76px)/1.02 var(--serif); margin-bottom: 18px; }
 .scene .txt p { color: #ece8da; font-size: clamp(16px, 1.3vw, 19px); }
 .scene .txt .refs { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px; }
 .scene .txt .refs a { font: 400 11.5px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; border: 1px solid var(--line-2); padding: 9px 10px; background: rgba(0, 0, 0, .35); transition: background .3s, color .3s, border-color .3s; }
 .scene .txt .refs a:hover { background: var(--ocre); border-color: var(--ocre); color: var(--ink); }
-.chapter { position: absolute; z-index: 4; left: clamp(16px, 3vw, 36px); top: 84px; color: #eee; display: flex; gap: 14px; align-items: center; }
+.chapter { position: absolute; z-index: 4; left: clamp(16px, 3vw, 36px); top: calc(9vh + 18px); color: #eee; display: flex; gap: 14px; align-items: center; }
 .chapter i { width: 34px; height: 1px; background: var(--ocre); }
-.counter { position: absolute; z-index: 4; right: clamp(16px, 3vw, 36px); top: 84px; color: #eee; }
-.subs { position: absolute; z-index: 4; left: 0; right: 0; bottom: 9vh; height: 130px; }
-.sub { position: absolute; left: 0; right: 0; margin: 0 auto; bottom: 0; width: min(92vw, 820px); text-align: center; }
+.counter { position: absolute; z-index: 4; right: clamp(16px, 3vw, 36px); top: calc(9vh + 18px); color: #eee; }
+.subs { position: absolute; z-index: 4; left: 0; right: 0; bottom: 0; height: 15vh; }
+.sub { position: absolute; left: 0; right: 0; top: 0; bottom: 0; margin: 0 auto; width: min(92vw, 860px); display: flex; align-items: center; justify-content: center; text-align: center; }
+.sub span { font: 400 clamp(17px, 1.6vw, 23px)/1.45 var(--serif); color: #f6f1e3; }
+.sub span::before { content: "— "; color: var(--ocre); }
 .js .sub { opacity: 0; transform: translateY(12px); }
 .js .sub:first-child { opacity: 1; transform: none; }
 .bigfig { position: absolute; z-index: 4; right: var(--gut); top: 50%; transform: translateY(-50%); text-align: right; }
 .js .bigfig { opacity: 0; }
 .bigfig b { display: block; font: 400 clamp(80px, 14vw, 220px)/.9 var(--serif); color: var(--ocre); font-weight: 400; }
 .bigfig span { font-size: clamp(15px, 1.3vw, 18px); color: #eee; }
-.progress { position: absolute; z-index: 4; left: clamp(16px, 3vw, 36px); right: clamp(16px, 3vw, 36px); bottom: 26px; height: 1px; background: rgba(255, 255, 255, .2); }
+.progress { position: absolute; z-index: 4; left: 0; right: 0; bottom: 15vh; height: 2px; background: rgba(255, 255, 255, .15); }
 .progress i { position: absolute; inset: 0; background: var(--ocre); transform: scaleX(0); transform-origin: left; }
 
 /* ---------- Fondus de couleur ---------- */
@@ -298,7 +305,9 @@ button.frame { all: unset; flex: none; width: clamp(280px, 38vw, 620px); margin-
   .frames { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 760px) {
-  .chapter { top: 70px; font-size: 10.5px; } .counter { display: none; }
+  .chapter { top: calc(9vh + 12px); font-size: 10.5px; } .counter { display: none; }
+  .subtitle { bottom: 9vh; }
+  .sub span { font-size: 16px; }
   .bigfig { right: 16px; left: 16px; text-align: left; top: auto; bottom: 26vh; transform: none; }
   .scene .txt { top: 15vh; }
   .scene .txt h2 { font-size: 34px; }
