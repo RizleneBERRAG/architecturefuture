@@ -23,7 +23,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 OUT = ROOT / "docs"
 SITE = "architecture4future"
-VERSION = "60"
+VERSION = "61"
 
 PROJETS = json.loads((SRC / "projets.json").read_text(encoding="utf-8"))
 BY_SLUG = {p["slug"]: p for p in PROJETS}
@@ -142,12 +142,17 @@ def layout(meta, body, nav_key):
     cur = lambda k: ' aria-current="page"' if k == nav_key else ""
     left = "".join(f'<a href="{h}"{cur(k)}>{l}</a>' for k, h, l in NAV_LEFT)
     right = "".join(f'<a href="{h}"{cur(k)}>{l}</a>' for k, h, l in NAV_RIGHT)
-    menu = "".join(f'<a href="{h}"{cur(k)}><span>{i:02d}</span>{l}</a>' for i, (k, h, l) in enumerate(NAV_LEFT + NAV_RIGHT, 1))
+    ap = lambda t: t.replace("’", '<span class="ap">’</span>')
+    left = "".join(f'<a href="{h}"{cur(k)}>{ap(l)}</a>' for k, h, l in NAV_LEFT)
+    right = "".join(f'<a href="{h}"{cur(k)}>{ap(l)}</a>' for k, h, l in NAV_RIGHT)
+    menu = "".join(f'<a href="{h}"{cur(k)}><span>{i:02d}</span><em>{ap(l)}</em></a>' for i, (k, h, l) in enumerate(NAV_LEFT + NAV_RIGHT, 1))
     og = meta.get("og", "img/gere-08.webp")
     cls = ["home"] if nav_key == "index" else []
     if '<section class="hero' in body:
         cls.append("has-hero")
     bcls = f' class="{" ".join(cls)}"' if cls else ""
+    # La marque grünboX garde sa casse, même dans les titres en petites capitales
+    body = re.sub(r">([^<]*)<", lambda m: ">" + m.group(1).replace("grünboX", '<span class="nc">grünboX</span>') + "<", body)
     return f"""<!doctype html>
 <html lang="fr">
 <head>
@@ -212,9 +217,15 @@ def parse_page(path):
     return meta, body
 
 
+def longest_word(text):
+    plain = re.sub(r"<[^>]+>", " ", html.unescape(text))
+    return max((len(w) for w in re.split(r"[\s\-]+", plain) if w), default=8)
+
+
 def hero(image, alt, left, right, caption, short=True):
     """Ouverture d’une page : grande photo, titre coupé par un trait vertical."""
-    return f"""<section class="hero{' short' if short else ''}">
+    L = max(8, longest_word(left))
+    return f"""<section class="hero{' short' if short else ''}" style="--L:{L}">
   <div class="slides"><figure class="slide is-on" data-cap="{E(caption)}">{img(image, alt, '100vw', eager=True)}</figure></div>
   <div class="hero-title"><h1><span class="h-l" data-chars>{left}</span><span class="h-bar" aria-hidden="true"></span><span class="h-r">{right}</span></h1></div>
   <p class="hero-cap"><span data-cap-out>{E(caption)}</span></p>

@@ -20,7 +20,7 @@
             if (/^\s+$/.test(part)) { frag.appendChild(doc.createTextNode(' ')); return; }
             var w = doc.createElement('span'); w.className = 'w';
             Array.prototype.forEach.call(part, function (ch) {
-              var s = doc.createElement('span'); s.className = 'ch'; s.textContent = ch;
+              var s = doc.createElement('span'); s.className = /[’']/.test(ch) ? 'ch ap' : 'ch'; s.textContent = ch;
               s.style.transitionDelay = (i++ * 0.028).toFixed(3) + 's';
               w.appendChild(s);
             });
