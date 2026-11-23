@@ -21,15 +21,14 @@ Site **statique** : aucune base de données, publiable tel quel depuis `docs/` (
 
 Après chaque modification de `src/` : `python build.py` (régénère `docs/*.html`).
 
-## Charte « Jardin » (version retenue le 23/11/2026)
+## Charte « cinéma » (version en cours, 23/11/2026)
 
-- Couleurs du végétal : crème `#f6f1e3`, sauge `#dde3cf`, olive `#7d8a3c`, ocre `#d99a3d`, mousse `#3f5a34`, encre `#22301e`.
-- Young Serif (titres) et Work Sans (texte), Google Fonts.
-- Grande photo avec encart crème à liseré ocre, les 4 principes en blocs de couleur, étiquettes à liseré, cartes de projets avec légende qui se déplie au survol.
-- Interactions : en-tête qui se resserre au défilement, apparitions douces, filtres animés des réalisations (mémorisés dans l’adresse), accordéon des compétences, compteurs de chiffres, frise qui se remplit, visionneuse au clavier et au doigt, vérification du formulaire.
-- JavaScript sans librairie (`docs/assets/site.js`). Tout reste lisible sans JavaScript et avec « réduire les animations ».
+- Nuit vert sombre `#0f1510`, crème `#f6f1e3`, ocre `#d99a3d` ; sauge, olive et mousse pour les fondus de couleur.
+- Young Serif (titres), Work Sans (texte), IBM Plex Mono (annotations).
+- Ouverture en bandes noires (une fois par visite), plans plein écran avec sous-titres, scènes épinglées, principes en fondus de couleur, filmographie sur pellicule, générique de fin, transitions de page en bandes noires, léger grain.
+- Animations : GSAP 3.12.5 + ScrollTrigger et Lenis 1.1.13 dans `docs/assets/vendor/`. Tout reste lisible sans JavaScript et avec « réduire les animations ».
 - Aucun dégradé, aucun halo, aucun bouton en gélule.
-- Les trois pistes comparées avant ce choix sont gardées dans `docs/pistes/`.
+- Les pistes comparées (A Lumière, B Jardin, C Galerie, prototype cinéma) restent dans `docs/pistes/`.
 
 ## Provenance du contenu
 
