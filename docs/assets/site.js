@@ -316,6 +316,18 @@
     });
   }
 
+  /* ---------- Panneaux des principes ---------- */
+  $$('.panels').forEach(function (group) {
+    var ps = $$('.panel', group);
+    var openP = function (p) { ps.forEach(function (x) { x.classList.toggle('is-open', x === p); }); };
+    ps.forEach(function (p) {
+      p.addEventListener('mouseenter', function () { if (fine) openP(p); });
+      p.addEventListener('focus', function () { openP(p); });
+      p.addEventListener('click', function () { openP(p); });
+      p.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openP(p); } });
+    });
+  });
+
   /* ---------- Haut de page ---------- */
   var tt = $('.to-top');
   if (tt) tt.addEventListener('click', function () { if (lenis) lenis.scrollTo(0, { duration: 1.4 }); else window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); });
