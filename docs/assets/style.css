@@ -330,3 +330,56 @@ button.frame { all: unset; flex: none; width: clamp(280px, 38vw, 620px); margin-
 }
 
 html:not(.js) .bars { display: none; }
+
+
+/* ===== Version allégée : le style sans les clichés de film ===== */
+.grain { display: none; }
+/* Rideau unique (plus de bandes noires) */
+.bars i:first-of-type { top: 0; height: 100%; background: var(--night); }
+.bars i:last-of-type { display: none; }
+.bars.is-open i:first-of-type { transform: translateY(-101%); }
+.bars .credit .b { display: none; }
+/* Scènes : plus de bandes noires, légende posée sur l’image */
+.stage::before, .stage::after { display: none; }
+.scene::after { background: rgba(10, 14, 10, .34); }
+.chapter, .counter { top: 92px; }
+.subs { left: var(--gut); right: var(--gut); bottom: 9vh; height: 4.6em; }
+.sub { left: 0; right: auto; margin: 0; width: min(40em, 100%); justify-content: flex-start; text-align: left; align-items: flex-end; gap: 16px; }
+.sub::before { content: ""; flex: none; width: 40px; height: 2px; background: var(--ocre); margin-bottom: .7em; }
+.sub span { font: 400 clamp(17px, 1.5vw, 22px)/1.45 var(--sans); color: #f3eee2; }
+.sub span::before { content: none; }
+.progress { bottom: 0; height: 3px; }
+/* Réalisations : rangée d’images nette, sans perforations */
+.reel { background: none; padding: 0; }
+.reel::before, .reel::after { display: none; }
+.frame .cap b { background: none; padding: 0; }
+.frame .ph { position: relative; }
+.frame .ph::after { content: ""; position: absolute; inset: 0; background: rgba(10, 14, 10, .25); transition: background .6s; }
+.frame:hover .ph::after { background: rgba(10, 14, 10, .05); }
+.frame .cap { z-index: 2; }
+.tile .ph { border: 0; }
+/* Bloc agence / équipe : mise en page éditoriale plutôt que générique */
+.credits { background: var(--night-2); text-align: left; padding: clamp(90px, 14vh, 150px) var(--gut); display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px 48px; }
+.credits .blk { margin: 0; max-width: none; border-top: 1px solid var(--line-2); padding-top: 20px; }
+.credits .fin, .credits .contactline, .credits .wide { grid-column: 1 / -1; }
+.credits .fin { margin: 40px 0 0; }
+.credits .contactline { align-items: flex-start; }
+@media (max-width: 960px) { .credits { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 760px) { .credits { grid-template-columns: 1fr; } .subs { bottom: 7vh; } .chapter { top: 76px; } }
+/* Titres ramenés à une taille plus mesurée */
+.shot h1 { font-size: clamp(36px, 4.8vw, 76px); line-height: 1.04; max-width: 18ch; }
+.shot.short h1 { font-size: clamp(34px, 4.2vw, 64px); }
+.shot .title { bottom: 24vh; }
+.cword h2 { font-size: clamp(44px, 7vw, 110px); }
+.bigfig b { font-size: clamp(56px, 7vw, 110px); }
+.fin { font-size: clamp(36px, 4.4vw, 68px); }
+.next .in b { font-size: clamp(32px, 4.2vw, 64px); }
+.film h2 { font-size: clamp(30px, 3.4vw, 54px); }
+.h2 { font-size: clamp(28px, 3vw, 48px); }
+.scene .txt h2 { font-size: clamp(28px, 3vw, 46px); }
+.quote blockquote { font-size: clamp(24px, 2.8vw, 44px); max-width: 26ch; }
+.marquee .item { font-size: clamp(22px, 2.4vw, 38px); }
+.menu a { font-size: clamp(32px, 7vw, 56px); }
+.prose p:first-child { font-size: clamp(19px, 1.6vw, 24px); }
+@media (max-width: 760px) { .shot h1 { font-size: 34px; } .scene .txt h2 { font-size: 28px; } }
+@media (max-width: 760px) { .scene::after { background: rgba(10, 14, 10, .46); } .shot .scroll { display: none; } }

@@ -23,7 +23,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 OUT = ROOT / "docs"
 SITE = "architecture4future"
-VERSION = "25"
+VERSION = "31"
 
 PROJETS = json.loads((SRC / "projets.json").read_text(encoding="utf-8"))
 BY_SLUG = {p["slug"]: p for p in PROJETS}
@@ -144,8 +144,7 @@ def layout(meta, body, nav_key):
 </head>
 <body{home}>
 <a class="skiplink" href="#contenu">Aller au contenu</a>
-<div class="grain" aria-hidden="true"></div>
-<div class="bars" aria-hidden="true"><i></i><i></i><div class="credit"><div><span class="a">{LOGO}</span><span class="b mono">présente</span></div></div></div>
+<div class="bars" aria-hidden="true"><i></i><i></i><div class="credit"><div><span class="a">{LOGO}</span></div></div></div>
 <button class="intro-skip mono" type="button" hidden>Passer l’intro</button>
 <header class="top">
   <a class="logo" href="index.html" aria-label="{SITE}, accueil">{LOGO}</a>
@@ -200,7 +199,7 @@ def project_page(i, p):
     shots = "".join(
         f'<button class="frame" type="button" data-full="img/{nm}.webp" aria-label="Agrandir la photo {k + 1}">'
         f'<div class="ph">{img(nm, alt_for(p, k), "(max-width: 760px) 80vw, 40vw")}</div>'
-        f'<div class="cap"><b>Plan {k + 1:02d}</b><span class="mono">{k + 1} / {n}</span></div></button>'
+        f'<div class="cap"><b></b><span class="mono">{k + 1:02d} / {n:02d}</span></div></button>'
         for k, nm in enumerate(p["images"])
     )
     plural = "s" if n > 1 else ""
@@ -209,7 +208,7 @@ def project_page(i, p):
   <div class="bg">{img(p['images'][0], alt_for(p), '100vw', eager=True)}</div>
   <div class="title"><span class="kick mono">Réalisation {i + 1:02d} / {len(PROJETS):02d} — {E(p['categorie'])}</span><h1>{lines(p['titre'])}</h1></div>
   <p class="subtitle"><span>{E(p['sous_titre'])}. {E(p['lieu'])}, {E(p['annee'])}.</span></p>
-  <span class="tc mono">Plan 01</span><span class="scroll mono">Défiler</span>
+  <span class="scroll mono">Défiler</span>
 </section>
 <section class="sec">
   <div class="w two">
@@ -218,7 +217,7 @@ def project_page(i, p):
   </div>
 </section>
 <section class="film">
-  <div class="head rv"><div><p class="lab mono">Les images</p><h2>{n} plan{plural}</h2></div><p>Cliquez sur une image pour l’agrandir.</p></div>
+  <div class="head rv"><div><p class="lab mono">Les images</p><h2>{n} image{plural}</h2></div><p>Cliquez sur une image pour l’agrandir.</p></div>
   <div class="reel-wrap"><div class="reel">{shots}</div></div>
 </section>
 <a class="prevlink" href="projet-{prev_p['slug']}.html"><span class="mono">← Réalisation précédente</span><b>{E(prev_p['titre'])}</b></a>
