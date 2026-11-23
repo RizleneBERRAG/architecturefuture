@@ -67,7 +67,7 @@
 
   /* ---------- Citation mot à mot ---------- */
   $$('[data-words]').forEach(function (q) {
-    q.innerHTML = q.textContent.trim().split(/\s+/).map(function (w) { return '<span class="w">' + w + '</span>'; }).join(' ');
+    q.innerHTML = q.textContent.trim().split(/\s+/).map(function (w) { return '<span class="qw">' + w + '</span>'; }).join(' ');
   });
 
   if (hasGsap) {
@@ -136,7 +136,7 @@
       gsap.fromTo(bg, { yPercent: -5 }, { yPercent: 5, ease: 'none', scrollTrigger: { trigger: bg.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } });
     });
     $$('.quote').forEach(function (q) {
-      var ws = $$('.w', q);
+      var ws = $$('.qw', q);
       if (ws.length) gsap.to(ws, { opacity: 1, stagger: .1, ease: 'none', scrollTrigger: { trigger: $('blockquote', q), start: 'top 80%', end: 'bottom 40%', scrub: true } });
     });
 
@@ -146,7 +146,7 @@
       ScrollTrigger.create({ trigger: t, start: 'top 70%', end: 'bottom 60%', scrub: true, onUpdate: function (st) { bar.style.height = (st.progress * (t.offsetHeight - 12)) + 'px'; } });
     });
   } else {
-    $$('.quote .w').forEach(function (w) { w.style.opacity = 1; });
+    $$('.quote .qw').forEach(function (w) { w.style.opacity = 1; });
     $$('.timeline .bar').forEach(function (b) { b.style.height = 'calc(100% - 12px)'; });
   }
 
