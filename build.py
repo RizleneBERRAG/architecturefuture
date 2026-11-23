@@ -23,7 +23,7 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 OUT = ROOT / "docs"
 SITE = "architecture4future"
-VERSION = "33"
+VERSION = "42"
 
 PROJETS = json.loads((SRC / "projets.json").read_text(encoding="utf-8"))
 BY_SLUG = {p["slug"]: p for p in PROJETS}
@@ -144,6 +144,7 @@ def layout(meta, body, nav_key):
 </head>
 <body{home}>
 <a class="skiplink" href="#contenu">Aller au contenu</a>
+<div class="cursor" aria-hidden="true"><span></span></div>
 <div class="bars" aria-hidden="true"><i></i><i></i><div class="credit"><div><span class="a">{LOGO}</span></div></div></div>
 <button class="intro-skip mono" type="button" hidden>Passer l’intro</button>
 <header class="top">
@@ -156,22 +157,26 @@ def layout(meta, body, nav_key):
 {body}
 </main>
 <footer class="site-foot">
-  <div class="sf-top">
-    <div class="sf-brand">
-      <a class="logo" href="index.html">{LOGO}</a>
-      <p>Agence d’architecture à Vienne. Des bâtiments agiles, citoyens, sobres et végétaux.</p>
-      <div class="sf-social">
-        <a href="https://www.instagram.com/archi4future/" aria-label="Instagram" rel="noopener" target="_blank">{ICON_IG}</a>
-        <a href="https://fr.linkedin.com/in/patrick-stefan-rheinert-3ba51641" aria-label="LinkedIn" rel="noopener" target="_blank">{ICON_IN}</a>
+  <div class="sf-scene">
+    <div class="sf-bg">{img("tiny-02", "Terrasse plantée et jardins verticaux", "100vw")}</div>
+    <svg class="vine" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true"><path class="stem" pathLength="1" d="M-20,250 C140,250 200,140 340,150 C480,160 520,250 680,230 C840,210 880,90 1040,80 C1120,75 1180,95 1240,110"/><g class="leaf" style="--d:0.35s" transform="translate(120 236) rotate(-40)"><path d="M0,0 C8,-14 26,-16 40,-4 C26,8 10,10 0,0Z"/><path class="rib" d="M2,0 L34,-4"/></g><g class="leaf" style="--d:0.63s" transform="translate(248 178) rotate(35)"><path d="M0,0 C8,-14 26,-16 40,-4 C26,8 10,10 0,0Z"/><path class="rib" d="M2,0 L34,-4"/></g><g class="leaf" style="--d:0.91s" transform="translate(345 150) rotate(-30)"><path d="M0,0 C8,-14 26,-16 40,-4 C26,8 10,10 0,0Z"/><path class="rib" d="M2,0 L34,-4"/></g><g class="leaf" style="--d:1.19s" transform="translate(470 178) rotate(40)"><path d="M0,0 C8,-14 26,-16 40,-4 C26,8 10,10 0,0Z"/><path class="rib" d="M2,0 L34,-4"/></g><g class="leaf" style="--d:1.47s" transform="translate(605 236) rotate(-35)"><path d="M0,0 C8,-14 26,-16 40,-4 C26,8 10,10 0,0Z"/><path class="rib" d="M2,0 L34,-4"/></g><g class="leaf" style="--d:1.75s" transform="translate(760 216) rotate(30)"><path d="M0,0 C8,-14 26,-16 40,-4 C26,8 10,10 0,0Z"/><path class="rib" d="M2,0 L34,-4"/></g><g class="leaf" style="--d:2.03s" transform="translate(905 128) rotate(-45)"><path d="M0,0 C8,-14 26,-16 40,-4 C26,8 10,10 0,0Z"/><path class="rib" d="M2,0 L34,-4"/></g><g class="leaf" style="--d:2.31s" transform="translate(1040 82) rotate(25)"><path d="M0,0 C8,-14 26,-16 40,-4 C26,8 10,10 0,0Z"/><path class="rib" d="M2,0 L34,-4"/></g><g class="leaf" style="--d:2.59s" transform="translate(1165 95) rotate(-30)"><path d="M0,0 C8,-14 26,-16 40,-4 C26,8 10,10 0,0Z"/><path class="rib" d="M2,0 L34,-4"/></g></svg>
+    <div class="sf-in">
+      <p class="mono sf-kick">Un bâtiment à transformer, un jardin à faire pousser ?</p>
+      <a class="sf-mail" href="mailto:contact@architecturefuture.fr" data-cursor="Écrire">contact@architecturefuture.fr</a>
+      <div class="sf-line">
+        <a class="ul" href="tel:+33986572544">09 86 57 25 44</a>
+        <span>grünboX-Vienne, 75 rue Victor Faugier</span>
+        <span class="mono sf-clock">Vienne, <b data-clock>—</b></span>
       </div>
     </div>
-    <div class="sf-col"><p class="mono">Agence</p><p>grünboX-Vienne<br>75 rue Victor Faugier<br>38200 Vienne</p></div>
-    <div class="sf-col"><p class="mono">Contact</p><p><a class="ul" href="tel:+33986572544">09 86 57 25 44</a><br><a class="ul" href="mailto:contact@architecturefuture.fr">contact@architecturefuture.fr</a></p><a class="btn" href="contact.html">Écrire à l’agence →</a></div>
-    <div class="sf-col"><p class="mono">Pages</p><ul>{"".join(f'<li><a class="ul" href="{h}">{l}</a></li>' for k, h, l in links)}</ul></div>
   </div>
+  <div class="sf-band" aria-hidden="true"><div class="sf-track">
+    <span>agile</span><span>citoyenne</span><span>sobre</span><span>végétale</span><span>agile</span><span>citoyenne</span><span>sobre</span><span>végétale</span>
+    <span>agile</span><span>citoyenne</span><span>sobre</span><span>végétale</span><span>agile</span><span>citoyenne</span><span>sobre</span><span>végétale</span>
+  </div></div>
   <div class="sf-bottom mono">
-    <span>SAS d’architecture au capital de 4 444 € · SIRET 892 007 444 · Inscrite à l’Ordre des architectes</span>
-    <span><a class="ul" href="mentions-legales.html">Mentions légales</a><button class="to-top ul" type="button">Haut de page ↑</button></span>
+    <span>architecture4future · SAS au capital de 4 444 € · SIRET 892 007 444 · Ordre des architectes</span>
+    <span><a class="ul" href="https://www.instagram.com/archi4future/" rel="noopener" target="_blank">Instagram</a><a class="ul" href="https://fr.linkedin.com/in/patrick-stefan-rheinert-3ba51641" rel="noopener" target="_blank">LinkedIn</a><a class="ul" href="mentions-legales.html">Mentions légales</a><button class="to-top ul" type="button">Haut ↑</button></span>
   </div>
 </footer>
 <script src="assets/vendor/gsap.min.js" defer></script>

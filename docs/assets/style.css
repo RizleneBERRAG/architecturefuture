@@ -410,3 +410,65 @@ html:not(.js) .bars { display: none; }
   .sf-col:nth-child(3) { grid-column: 1 / -1; order: 3; }
   .sf-col:nth-child(4) { order: 2; }
 }
+
+/* ===== Pied de page vivant (remplace les colonnes) ===== */
+.sf-top { display: none; }
+.site-foot { padding: 0; border-top: 0; background: var(--night); }
+.sf-scene { position: relative; min-height: 88svh; overflow: hidden; display: flex; align-items: center; }
+.sf-bg { position: absolute; inset: -24px; animation: breathe 22s ease-in-out infinite alternate; }
+.sf-scene::after { content: ""; position: absolute; inset: 0; background: rgba(10, 14, 10, .58); }
+.sf-in { position: relative; z-index: 3; padding: 0 var(--gut); width: 100%; }
+.sf-kick { color: #e6e1d3; margin-bottom: 26px; display: flex; gap: 14px; align-items: center; }
+.sf-kick::before { content: ""; width: 40px; height: 2px; background: var(--ocre); }
+.sf-mail { display: inline-block; font: 400 clamp(28px, 4.6vw, 72px)/1.05 var(--serif); color: var(--cream); position: relative; overflow-wrap: anywhere; }
+.sf-mail::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; background: var(--ocre); transform: scaleX(.18); transform-origin: left; transition: transform .7s var(--ease); }
+.sf-mail:hover::after { transform: scaleX(1); }
+.sf-line { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 12px 34px; align-items: baseline; color: #e6e1d3; font-size: 16px; }
+.sf-line a { font: 400 clamp(20px, 1.8vw, 26px)/1.2 var(--serif); color: var(--cream); }
+.sf-clock b { color: var(--ocre); font-weight: 400; }
+.sf-band { background: var(--ocre); color: var(--ink); overflow: hidden; padding: 14px 0; }
+.sf-track { display: flex; width: max-content; animation: mq 30s linear infinite; }
+.sf-track span { font: 400 clamp(20px, 2vw, 30px)/1 var(--serif); padding: 0 26px; display: flex; align-items: center; gap: 52px; }
+.sf-track span::after { content: "✳"; font-size: .55em; }
+.site-foot .sf-bottom { padding: 20px var(--gut); border-top: 0; max-width: none; }
+.sf-bottom span:last-child { gap: 20px; flex-wrap: wrap; }
+@keyframes breathe { from { scale: 1; } to { scale: 1.07; } }
+
+/* Liane qui pousse */
+.vine { position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; width: 100%; height: 42%; pointer-events: none; overflow: visible; }
+.vine .stem { fill: none; stroke: var(--sage); stroke-width: 2; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 3.2s cubic-bezier(.45, .05, .25, 1); opacity: .9; }
+.vine .leaf path { fill: var(--olive); }
+.vine .leaf .rib { fill: none; stroke: var(--sage); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.vine .leaf { transform-box: fill-box; transform-origin: 0 50%; scale: 0; transition: scale .9s cubic-bezier(.3, 1.4, .5, 1) var(--d); }
+.vine .leaf:nth-of-type(even) path:first-child { fill: var(--ocre); }
+.vine.grow .stem { stroke-dashoffset: 0; }
+.vine.grow .leaf { scale: 1; }
+
+/* ===== Touches de vie ===== */
+/* Curseur */
+.cursor { position: fixed; left: 0; top: 0; z-index: 350; pointer-events: none; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: var(--ocre); opacity: 0; transition: width .4s var(--ease), height .4s var(--ease), margin .4s var(--ease), opacity .3s, background .3s; display: grid; place-items: center; }
+.cursor span { font: 400 11px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink); opacity: 0; transition: opacity .25s; }
+.cursor.on { opacity: 1; }
+.cursor.hover { width: 44px; height: 44px; margin: -22px 0 0 -22px; background: rgba(217, 154, 61, .35); }
+.cursor.label { width: 86px; height: 86px; margin: -43px 0 0 -43px; background: var(--ocre); }
+.cursor.label span { opacity: 1; }
+@media (hover: none), (pointer: coarse) { .cursor { display: none; } }
+/* Photos d’ouverture : légère respiration + suivent la souris */
+.shot .bg { inset: -24px; animation: breathe 24s ease-in-out infinite alternate; transition: translate 1.2s cubic-bezier(.2, .7, .2, 1); }
+/* Titres qui montent mot à mot */
+.wd { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .08em; margin-bottom: -.08em; }
+.wd > span { display: inline-block; transform: translateY(105%); transition: transform 1s var(--ease-out); transition-delay: var(--wd, 0s); }
+.words-in .wd > span { transform: none; }
+/* Boutons aimantés */
+.btn, .sf-mail { transition: color .5s var(--ease), border-color .5s, translate .5s cubic-bezier(.2, .7, .2, 1); }
+/* Vignettes de projet qui s’inclinent légèrement */
+.tile .ph, .frame .ph { transition: transform .6s cubic-bezier(.2, .7, .2, 1); transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); }
+@media (prefers-reduced-motion: reduce) {
+  .sf-bg, .shot .bg, .sf-track { animation: none; }
+  .vine .stem { stroke-dashoffset: 0; } .vine .leaf { scale: 1; }
+  .wd > span { transform: none; }
+}
+@media (max-width: 760px) { .sf-scene { min-height: 78svh; } .vine { height: 30%; } .sf-line { flex-direction: column; gap: 10px; } }
+
+.cursor.hover { background: transparent; border: 1px solid var(--ocre); }
+@media (max-width: 760px) { .sf-mail { font-size: 5.6vw; overflow-wrap: normal; white-space: nowrap; } }
