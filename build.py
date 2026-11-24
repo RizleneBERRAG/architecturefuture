@@ -23,7 +23,9 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "src"
 OUT = ROOT / "docs"
 SITE = "architecture4future"
-VERSION = "61"
+VERSION = "62"
+# Compteur de visites sans cookie (GoatCounter) ; vide = pas de compteur
+GOATCOUNTER = "a4f-apercu"
 
 PROJETS = json.loads((SRC / "projets.json").read_text(encoding="utf-8"))
 BY_SLUG = {p["slug"]: p for p in PROJETS}
@@ -201,6 +203,7 @@ def layout(meta, body, nav_key):
 <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="assets/vendor/lenis.min.js" defer></script>
 <script src="assets/site.js?v={VERSION}" defer></script>
+{f'<script data-goatcounter="https://{GOATCOUNTER}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>' if GOATCOUNTER else ""}
 </body>
 </html>
 """
